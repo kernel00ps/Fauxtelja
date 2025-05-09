@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2fut3277jl4q"]
+
+[sub_resource type="Gradient" id="Gradient_mgoel"]
+offsets = PackedFloat32Array(0, 0.012987, 0.4, 0.961039, 1)
+colors = PackedColorArray(1, 0.641853, 0.585831, 1, 0.545329, 0.668873, 0.493956, 1, 0.962801, 0.890088, 0.966681, 1, 0.180778, 1, 0.950462, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dn72j"]
+gradient = SubResource("Gradient_mgoel")
+repeat = 1
+
+[node name="Battle" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_dn72j")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cambitfqiajw"]
+
+[ext_resource type="Script" uid="uid://dsf31bx1psaw4" path="res://scripts/main_scene.gd" id="1_pw63i"]
+[ext_resource type="PackedScene" uid="uid://dk76svg2pv2bn" path="res://scenes/ui.tscn" id="3_7ykc4"]
+[ext_resource type="PackedScene" uid="uid://cff4r4xi4l8u7" path="res://scenes/player.tscn" id="4_pu3yx"]
+
+[sub_resource type="Gradient" id="Gradient_7ykc4"]
+offsets = PackedFloat32Array(0, 0.537285, 1)
+colors = PackedColorArray(0.359667, 0.298912, 1, 1, 0.695732, 0.301032, 0, 1, 1, 0.370136, 0.756872, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pu3yx"]
+gradient = SubResource("Gradient_7ykc4")
+fill_from = Vector2(0.512821, 0)
+fill_to = Vector2(0.538462, 1)
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_pw63i")
+
+[node name="UI" parent="." instance=ExtResource("3_7ykc4")]
+
+[node name="Player" parent="." instance=ExtResource("4_pu3yx")]
+z_index = 1
+position = Vector2(16, 16)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 642.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_pu3yx")

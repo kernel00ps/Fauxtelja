@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk76svg2pv2bn"]
+
+[ext_resource type="Script" uid="uid://xkiady6v5qer" path="res://scripts/ui.gd" id="1_nt7q6"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_nt7q6")
+
+[node name="TurnLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_right = 140.0
+offset_bottom = 77.0
+text = "TURN: n"
+fit_content = true
