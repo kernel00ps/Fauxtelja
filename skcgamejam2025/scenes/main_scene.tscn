@@ -163,3 +163,4 @@ animation = &"idle_down"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="dummy_32x16"]
 sprite_frames = SubResource("SpriteFrames_r6p65")
 animation = &"idle_down"
+

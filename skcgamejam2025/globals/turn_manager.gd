@@ -18,6 +18,8 @@ func update_turn_label():
 func start_turn():
 	turn_in_progress = true
 	current_unit_index = 0
+	cleanup_invalid_units()
+
 	match current_state:
 		TurnState.PLAYER:
 			if player_units.is_empty():
@@ -28,8 +30,15 @@ func start_turn():
 			if enemy_units.is_empty():
 				end_turn()
 			else:
-				enemy_units[current_unit_index].start_turn()
+				var unit = enemy_units[current_unit_index]
+				if is_instance_valid(unit):
+					unit.start_turn()
+				else:
+					unit_finished_turn()  
+
 	emit_signal("turn_changed", current_state)
+
+
 	
 func unit_finished_turn():
 	current_unit_index += 1
@@ -48,3 +57,8 @@ func end_turn():
 	current_state = TurnState.ENEMY if current_state == TurnState.PLAYER else TurnState.PLAYER
 	await get_tree().process_frame
 	start_turn()
+
+
+func cleanup_invalid_units():
+	player_units = player_units.filter(is_instance_valid)
+	enemy_units = enemy_units.filter(is_instance_valid)

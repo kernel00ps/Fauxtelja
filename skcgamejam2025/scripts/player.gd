@@ -1,5 +1,7 @@
 extends Unit
 
+class_name Player
+
 var action_performed: bool = false
 var moved: bool = false
 
@@ -32,7 +34,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if is_adjacent and viewport_rect.has_point(target_tile):
 		marker.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
-		marker.rotation = delta_tile.angle() + deg_to_rad(90.0)
+		marker.rotation = delta_tile.angle() -deg_to_rad(90.0)
 		marker.visible = true
 		target.visible = false
 	elif not is_adjacent and not action_performed and viewport_rect.has_point(target_tile) and current_tile != target_tile:
@@ -79,7 +81,7 @@ func end_turn():
 
 	action_performed = false
 	moved = false
-	TurnManager.unit_finished_turn()
+	super.end_turn()
 
 func get_tile_center(tile: Vector2) -> Vector2:
 	return tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2

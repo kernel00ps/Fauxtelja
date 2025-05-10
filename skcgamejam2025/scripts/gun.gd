@@ -13,6 +13,11 @@ func _physics_process(delta: float) -> void:
 
 func fire() -> void:
 	var bullet: Bullet = bullet_path.instantiate()
-	bullet.direction = pivot.rotation
-	bullet.position = sprite.get_global_position()  # Fire from the gun barrel's tip
-	get_tree().current_scene.add_child(bullet)  # Don't parent it to the gun!
+	# Convert the gun's rotation to a direction (Vector2)
+	bullet.direction = Vector2(cos(pivot.rotation), sin(pivot.rotation))  # Direction based on angle
+
+	# Fire from the gun barrel's tip (position of the sprite + any offset for the barrel)
+	bullet.position = sprite.get_global_position()
+
+	# Add the bullet to the scene (parent it to the current scene)
+	get_tree().current_scene.add_child(bullet)

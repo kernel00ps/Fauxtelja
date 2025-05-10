@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba3b4d1g75gn7"]
+
+[ext_resource type="Script" uid="uid://c38f50rtde8mq" path="res://scripts/range_enemy_unit.gd" id="1_0kwgp"]
+[ext_resource type="Texture2D" uid="uid://c1vedqjj2ew3u" path="res://assets/minion_shonja_16x16.png" id="2_0kwgp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjmfa"]
+size = Vector2(6, 8)
+
+[node name="RangeEnemyUnit" type="CharacterBody2D"]
+script = ExtResource("1_0kwgp")
+metadata/_custom_type_script = "uid://c1mo7wi7wthwb"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0kwgp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jjmfa")

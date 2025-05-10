@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hf88p276qolf"
-path="res://.godot/imported/alien_empty.png-204b27bdfcc0ba3296359541084519d7.ctex"
+uid="uid://8xpiuu8x53xn"
+path="res://.godot/imported/bullet_ball.png-f254e4597d23bd7ccad822a729eaebf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/alien_empty.png"
-dest_files=["res://.godot/imported/alien_empty.png-204b27bdfcc0ba3296359541084519d7.ctex"]
+source_file="res://assets/bullet_ball.png"
+dest_files=["res://.godot/imported/bullet_ball.png-f254e4597d23bd7ccad822a729eaebf4.ctex"]
 
 [params]
 
