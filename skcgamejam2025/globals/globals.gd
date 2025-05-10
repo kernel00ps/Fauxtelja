@@ -7,3 +7,8 @@ const BASE_HEALTH_ENEMY: int = 1
 const BASE_HEALTH_RANGE: int = 1
 const BASE_HEALTH_MELEE: int = 1
 const BASE_HEALTH_EXPLOSION: int = 1
+
+var max_bullets: int = 3;
+var current_bullets: int
+
+signal use_bullet()

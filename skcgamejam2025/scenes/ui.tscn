@@ -11,3 +11,14 @@ offset_right = 140.0
 offset_bottom = 77.0
 text = "TURN: n"
 fit_content = true
+
+[node name="Bullet Counter" type="HBoxContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = 10.0
+offset_right = -319.0
+offset_bottom = 22.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+alignment = 1

@@ -12,6 +12,9 @@ var moved: bool = false
 
 var original_position := Vector2.ZERO
 
+func _ready():
+	Globals.current_bullets = Globals.max_bullets;
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if not can_act:
 		target.visible = false
@@ -70,9 +73,13 @@ func try_move_to_tile(target_tile: Vector2) -> void:
 
 func shoot(direction: Vector2) -> void:
 	print("Shooting in direction %s" % direction)
-	#$AnimationPlayer.play("shoot")
-	gun.fire()
-	end_turn()
+	
+	if(Globals.current_bullets > 0):
+		Globals.use_bullet.emit();
+		Globals.current_bullets -= 1;
+		gun.fire()
+		end_turn()
+
 
 func end_turn():
 	if not action_performed and not moved:
