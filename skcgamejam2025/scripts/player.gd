@@ -31,15 +31,26 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	var viewport_rect = get_viewport().get_visible_rect()
 
-	# Allow horizontal, vertical, and diagonal movement
 	var is_adjacent = delta_tile.length() <= Globals.TILE_SIZE * sqrt(2) and delta_tile.length() != 0
-	# This condition ensures that the target tile is adjacent, including diagonals, but not the same tile
 
 	if is_adjacent and viewport_rect.has_point(target_tile):
-		marker.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
-		marker.rotation = delta_tile.angle() -deg_to_rad(90.0)
-		marker.visible = true
-		target.visible = false
+		var blocked = false
+		for enemy in TurnManager.enemy_units:
+			if enemy == null:
+				continue
+			var enemy_tile = enemy.get_current_tile()
+			if enemy_tile == target_tile:
+				blocked = true
+				break
+		
+		if blocked:
+			marker.visible = false
+			target.visible = false
+		else:
+			marker.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
+			marker.rotation = delta_tile.angle() - deg_to_rad(90.0)
+			marker.visible = true
+			target.visible = false
 	elif not is_adjacent and not action_performed and viewport_rect.has_point(target_tile) and current_tile != target_tile:
 		target.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
 		target.visible = true
@@ -58,10 +69,17 @@ func _unhandled_input(event: InputEvent) -> void:
 			shoot(shoot_dir)
 
 func try_move_to_tile(target_tile: Vector2) -> void:
+	for enemy in TurnManager.enemy_units:
+		if enemy == null:
+			continue
+		var enemy_tile = enemy.get_current_tile()
+		if enemy_tile == target_tile:
+			print("Enemy blocking tile.")
+			return
+
 	var current_tile = get_current_tile()
 	var delta = target_tile - current_tile
 
-	# Allow diagonal movement and only check if it’s within one tile distance
 	if delta.length() <= Globals.TILE_SIZE * sqrt(2) and delta.length() != 0:
 		var viewport_rect = get_viewport().get_visible_rect()
 		if viewport_rect.has_point(target_tile):
@@ -92,6 +110,3 @@ func end_turn():
 
 func get_tile_center(tile: Vector2) -> Vector2:
 	return tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
-
-func get_current_tile() -> Vector2:
-	return (position - Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2).snapped(Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE))

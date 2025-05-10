@@ -27,8 +27,14 @@ func start_turn():
 	end_turn()
 
 func shoot() -> void:
-	var bullet: Pljuca = bullet_path.instantiate()
-	bullet.direction = Vector2(cos(rotation), sin(rotation))  # Direction based on angle
+	var player = get_closest_player()
+	if player == null:
+		return
 
-	bullet.position = get_global_position()
+	var bullet: Pljuca = bullet_path.instantiate()
+
+	var to_player = player.global_position - global_position
+	bullet.direction = to_player.normalized()
+
+	bullet.position = global_position
 	get_tree().current_scene.add_child(bullet)
