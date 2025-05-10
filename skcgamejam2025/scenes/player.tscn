@@ -117,6 +117,11 @@ texture = ExtResource("3_qlg0r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 360
+limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="Target" type="Sprite2D" parent="."]

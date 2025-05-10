@@ -19,14 +19,14 @@ func _on_collision(body: Node) -> void:
 		_explode(body)
 		queue_free()
 
-func _explode(enemy : Player) -> void:
+func _explode(player : Player) -> void:
 	var explosion = pljuca_effect.instantiate()
 	explosion.position = position
 	explosion.emitting = false
 	explosion.one_shot = true
 	explosion.emitting = true
 	
-	
+	player.die()
 	
 	get_parent().add_child(explosion)
 
