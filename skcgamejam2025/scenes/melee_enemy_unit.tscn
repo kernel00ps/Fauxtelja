@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dfje40ydhw0pa"]
 
-[ext_resource type="Script" path="res://scripts/melee_enemy_unit.gd" id="1_e0pp3"]
+[ext_resource type="Script" uid="uid://db5tyyjc8435w" path="res://scripts/melee_enemy_unit.gd" id="1_e0pp3"]
 [ext_resource type="Texture2D" uid="uid://c1vedqjj2ew3u" path="res://assets/minion_shonja_16x16.png" id="1_potkj"]
 [ext_resource type="Texture2D" uid="uid://dqud4soff0ss7" path="res://assets/sofa_16x16.png" id="2_gwm2q"]
 
@@ -62,11 +62,13 @@ size = Vector2(6, 8)
 script = ExtResource("1_e0pp3")
 metadata/_custom_type_script = "uid://c1mo7wi7wthwb"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="idle" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_yk7oq")
 animation = &"idle_up"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_potkj")

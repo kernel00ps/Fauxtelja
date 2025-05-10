@@ -32,13 +32,18 @@ func move_toward_player(player: Node2D) -> void:
 	var direction = to_player.normalized()
 	var step = Vector2.ZERO
 
-	# Move 1 tile toward the player along dominant axis
+	# Prefer cardinal axis
 	if abs(to_player.x) > abs(to_player.y):
 		step.x = sign(to_player.x)
 	else:
 		step.y = sign(to_player.y)
 
 	var new_position = global_position + step * Globals.TILE_SIZE
+	
+	if new_position.distance_to(player.global_position) < Globals.TILE_SIZE * 0.5:
+		print("Blocked by player")
+		return
+
 	global_position = new_position
 	print("%s (Enemy) moved toward %s" % [self.name, player.name])
 
