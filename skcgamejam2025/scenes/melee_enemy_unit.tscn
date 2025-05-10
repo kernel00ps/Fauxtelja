@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://bfyov8aimpl60"]
+[gd_scene load_steps=4 format=3 uid="uid://bfyov8aimpl60"]
 
-[node name="MeleeEnemyUnit" type="Node2D"]
+[ext_resource type="Script" uid="uid://db5tyyjc8435w" path="res://scripts/melee_enemy_unit.gd" id="1_e0pp3"]
+[ext_resource type="Texture2D" uid="uid://c1vedqjj2ew3u" path="res://assets/minion_shonja_16x16.png" id="1_potkj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0pp3"]
+size = Vector2(6, 8)
+
+[node name="MeleeEnemyUnit" type="CharacterBody2D"]
+script = ExtResource("1_e0pp3")
+metadata/_custom_type_script = "uid://c1mo7wi7wthwb"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_potkj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e0pp3")
