@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hf88p276qolf"
-path="res://.godot/imported/alien_empty.png-204b27bdfcc0ba3296359541084519d7.ctex"
+uid="uid://bqqfycyxsmcag"
+path="res://.godot/imported/sofa_32x16.png-d17e59724c4526e23e9166c38ba70de2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/alien_empty.png"
-dest_files=["res://.godot/imported/alien_empty.png-204b27bdfcc0ba3296359541084519d7.ctex"]
+source_file="res://assets/sofa_32x16.png"
+dest_files=["res://.godot/imported/sofa_32x16.png-d17e59724c4526e23e9166c38ba70de2.ctex"]
 
 [params]
 
