@@ -7,10 +7,7 @@ func _ready() -> void:
 	_on_turn_changed(TurnManager.current_state)  
 
 func _on_turn_changed(state):
-	match state:
-		TurnManager.TurnState.PLAYER:
-			turn_label.text = "Player Turn %d" % TurnManager.current_turn_number
-		TurnManager.TurnState.ENEMY:
-			turn_label.text = "Enemy Turn %d" % TurnManager.current_turn_number
-		TurnManager.TurnState.WAITING:
-			turn_label.text = "Waiting... %d" % TurnManager.current_turn_number
+	$TurnLabel.text = "Turn %d – %s" % [
+		TurnManager.current_turn_number,
+		 "Player" if state == TurnManager.TurnState.PLAYER else "Enemy"
+	]

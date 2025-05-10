@@ -46,4 +46,5 @@ func end_turn():
 		print("Turn %d complete" % current_turn_number)
 
 	current_state = TurnState.ENEMY if current_state == TurnState.PLAYER else TurnState.PLAYER
+	await get_tree().process_frame
 	start_turn()
