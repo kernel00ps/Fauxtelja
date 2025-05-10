@@ -2,6 +2,7 @@ extends Unit
 class_name EnemyUnit
 
 @export var gun: Gun 
+@onready var sprite: AnimatedSprite2D = $idle
 
 func start_turn():
 	super.start_turn()
@@ -37,6 +38,19 @@ func move_toward_player(player: Node2D) -> void:
 		step.x = sign(to_player.x)
 	else:
 		step.y = sign(to_player.y)
+		
+	var dir_name: String = ""
+	if step.x > 0:
+		dir_name = "right"
+	elif step.x < 0:
+		dir_name = "left"
+	elif step.y < 0:
+		dir_name = "up"
+	elif step.y > 0:
+		dir_name = "down"
+		
+	sprite.animation = "idle_" + dir_name
+	sprite.play()
 
 	var new_position = global_position + step * Globals.TILE_SIZE
 	
