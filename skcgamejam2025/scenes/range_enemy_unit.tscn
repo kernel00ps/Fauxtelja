@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cl2kndj6auiad"]
+[gd_scene load_steps=47 format=3 uid="uid://cl2kndj6auiad"]
 
 [ext_resource type="Script" uid="uid://c38f50rtde8mq" path="res://scripts/range_enemy_unit.gd" id="1_0kwgp"]
 [ext_resource type="Texture2D" uid="uid://c1vedqjj2ew3u" path="res://assets/minion_shonja_16x16.png" id="2_0kwgp"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bqjigr8bppuej" path="res://assets/spit_up_16x20.png" id="7_v0nkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjmfa"]
-size = Vector2(6, 8)
+size = Vector2(14, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rt2n2"]
 atlas = ExtResource("3_04qur")
@@ -114,7 +114,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7hoxg")
 }],
-"loop": true,
+"loop": false,
 "name": &"spit_right",
 "speed": 10.0
 }]
@@ -171,8 +171,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_g8iua")
 }],
-"loop": true,
-"name": &"spit-left",
+"loop": false,
+"name": &"spit_left",
 "speed": 10.0
 }]
 
@@ -228,9 +228,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sv30g")
 }],
-"loop": true,
-"name": &"default",
-"speed": 5.0
+"loop": false,
+"name": &"spit_down",
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bc2gs"]
@@ -265,30 +265,6 @@ region = Rect2(0, 0, 16, 20)
 atlas = ExtResource("7_v0nkn")
 region = Rect2(0, 120, 16, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_orouc"]
-atlas = ExtResource("7_v0nkn")
-region = Rect2(0, 100, 16, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hq4oj"]
-atlas = ExtResource("7_v0nkn")
-region = Rect2(0, 80, 16, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5kfyn"]
-atlas = ExtResource("7_v0nkn")
-region = Rect2(0, 60, 16, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_03rf0"]
-atlas = ExtResource("7_v0nkn")
-region = Rect2(0, 40, 16, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhw6g"]
-atlas = ExtResource("7_v0nkn")
-region = Rect2(0, 20, 16, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_adt81"]
-atlas = ExtResource("7_v0nkn")
-region = Rect2(0, 0, 16, 20)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_fvr44"]
 animations = [{
 "frames": [{
@@ -315,28 +291,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y1kxw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_orouc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hq4oj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5kfyn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_03rf0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qhw6g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_adt81")
 }],
-"loop": true,
-"name": &"spit-up",
-"speed": 5.0
+"loop": false,
+"name": &"spit_up",
+"speed": 10.0
 }]
 
 [node name="RangeEnemyUnit" type="CharacterBody2D"]
@@ -354,7 +312,7 @@ shape = SubResource("RectangleShape2D_jjmfa")
 [node name="idle" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_q3c5f")
-animation = &"idle_up"
+animation = &"idle_down"
 
 [node name="attack_right" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -365,16 +323,19 @@ offset = Vector2(2, 0)
 [node name="attack_left" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qo6um")
-animation = &"spit-left"
+animation = &"spit_left"
 offset = Vector2(-2, 0)
 
 [node name="attack_down" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5qp75")
+animation = &"spit_down"
+frame = 6
+frame_progress = 1.0
 offset = Vector2(0, 2)
 
 [node name="attack_up" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fvr44")
-animation = &"spit-up"
+animation = &"spit_up"
 offset = Vector2(0, -2)

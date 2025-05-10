@@ -3,6 +3,8 @@ class_name RangedEnemy
 
 var bullet_path = preload("res://scenes/pljuca.tscn")
 
+@onready var body_sprite: AnimatedSprite2D = $idle
+
 func start_turn():
 	can_act = true
 	
@@ -26,6 +28,13 @@ func start_turn():
 
 	end_turn()
 
+func face_direction(direction: String) -> void:
+	var anim_name = "idle_%s" % direction
+	if body_sprite.sprite_frames.has_animation(anim_name):
+		body_sprite.play(anim_name)
+	else:
+		push_warning("No animation '%s' on %s" % [anim_name, body_sprite.name])
+
 func shoot() -> void:
 	var player = get_closest_player()
 	if player == null:
@@ -34,27 +43,40 @@ func shoot() -> void:
 	var bullet: Pljuca = bullet_path.instantiate()
 
 	var to_player = player.global_position - global_position
-	bullet.direction = to_player.normalized()
-
 	var angle = to_player.angle()
-	if abs(angle) < PI / 4:
-		current_direction = "right"
-	elif abs(angle) > 3 * PI / 4:
-		current_direction = "left"
-	elif angle < 0:
-		current_direction = "up"
-	else:
-		current_direction = "down"
 
-	#play_attack_animation(current_direction)
+	bullet.direction = to_player.normalized()
+	
+	var dir_str: String
+	if abs(angle) < PI / 4:
+		dir_str = "right"
+	elif abs(angle) > 3 * PI / 4:
+		dir_str = "left"
+	elif angle < 0:
+		dir_str = "up"
+	else:
+		dir_str = "down"
+
+	# turn then shoot
+	face_direction(dir_str)
+	play_attack_animation(dir_str)
 
 	bullet.position = global_position
 	get_tree().current_scene.add_child(bullet)
 
 func play_attack_animation(direction: String) -> void:
-	var directions = ["up", "down", "left", "right"]
-	for dir in directions:
-		var sprite_node = $"attack_%s" % dir
-		sprite_node.visible = (dir == direction)
+	for dir in ["right", "left", "up", "down"]:
+		var node = get_node_or_null("attack_%s" % dir) as AnimatedSprite2D
+		if node == null:
+			push_warning("attack_%s not found!" % dir)
+			continue
+
 		if dir == direction:
-			sprite_node.play("spit_%s" % dir)
+			node.visible = true
+			node.stop()
+			node.frame = 0
+			node.play("spit_%s" % dir)
+		else:
+			node.stop()
+			node.frame = 0
+			node.visible = false
