@@ -25,7 +25,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	var delta_tile = target_tile - current_tile
 
 	var viewport_rect = get_viewport().get_visible_rect()
-	var is_adjacent = delta_tile.length() == Globals.TILE_SIZE and (delta_tile.x == 0 or delta_tile.y == 0)
+
+	# Allow horizontal, vertical, and diagonal movement
+	var is_adjacent = delta_tile.length() <= Globals.TILE_SIZE * sqrt(2) and delta_tile.length() != 0
+	# This condition ensures that the target tile is adjacent, including diagonals, but not the same tile
 
 	if is_adjacent and viewport_rect.has_point(target_tile):
 		marker.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
@@ -45,9 +48,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if is_adjacent and not moved:
 			try_move_to_tile(target_tile)
 		elif not is_adjacent and not action_performed:
-
 			var shoot_dir = (target_tile - current_tile).normalized()
-			#look_at(target_tile + Vector2(Globals.TILE_SIZE / 2, Globals.TILE_SIZE / 2))  # Rotate towards target
 			action_performed = true
 			shoot(shoot_dir)
 
@@ -55,7 +56,8 @@ func try_move_to_tile(target_tile: Vector2) -> void:
 	var current_tile = get_current_tile()
 	var delta = target_tile - current_tile
 
-	if delta.length() == Globals.TILE_SIZE and (delta.x == 0 or delta.y == 0):
+	# Allow diagonal movement and only check if it’s within one tile distance
+	if delta.length() <= Globals.TILE_SIZE * sqrt(2) and delta.length() != 0:
 		var viewport_rect = get_viewport().get_visible_rect()
 		if viewport_rect.has_point(target_tile):
 			position = get_tile_center(target_tile)
@@ -71,14 +73,13 @@ func shoot(direction: Vector2) -> void:
 	end_turn()
 
 func end_turn():
-	if not action_performed or not moved:
+	if not action_performed and not moved:
 		print("Action or movement required before ending turn!")
 		return
 
 	action_performed = false
 	moved = false
 	TurnManager.unit_finished_turn()
-
 
 func get_tile_center(tile: Vector2) -> Vector2:
 	return tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
