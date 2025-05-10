@@ -26,7 +26,7 @@ func _explode(enemy : EnemyUnit) -> void:
 	explosion.one_shot = true
 	explosion.emitting = true
 	
-	#enemy.queue_free()
+	enemy.die()
 	
 	get_parent().add_child(explosion)
 

@@ -2,8 +2,8 @@ extends EnemyUnit
 class_name RangedEnemy
 
 func start_turn():
-	super.start_turn()
-
+	can_act = true
+	
 	await get_tree().create_timer(0.3).timeout
 
 	var player = get_closest_player()

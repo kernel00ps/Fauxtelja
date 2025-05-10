@@ -56,4 +56,9 @@ func get_closest_player() -> Node2D:
 	return closest
 
 func die() -> void:
-	queue_free()
+	if TurnManager.enemy_units.has(self):
+		var was_my_turn = (TurnManager.enemy_units[TurnManager.current_unit_index] == self)
+		TurnManager.enemy_units.erase(self)
+		queue_free()
+		if was_my_turn:
+			TurnManager.unit_finished_turn()
