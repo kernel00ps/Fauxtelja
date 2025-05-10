@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://baray28svm6kc"]
+[gd_scene load_steps=4 format=3 uid="uid://baray28svm6kc"]
 
 [ext_resource type="Script" uid="uid://8lv3243d63r3" path="res://scripts/gun.gd" id="1_og67c"]
-[ext_resource type="Texture2D" uid="uid://bkk1wdx2k1b0n" path="res://assets/gun_14x9.png" id="1_x77fm"]
+[ext_resource type="Texture2D" uid="uid://bix0co7wrp5px" path="res://assets/gun_16x10.png" id="2_og67c"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_og67c"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_og67c")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="GunGolder" type="Sprite2D" parent="."]
+position = Vector2(-6.045, 0.415)
+texture = SubResource("MeshTexture_og67c")
+
+[node name="Sprite2D" type="Sprite2D" parent="GunGolder"]
 texture_filter = 1
-texture = ExtResource("1_x77fm")
+position = Vector2(6.045, -0.415)
+texture = ExtResource("2_og67c")
