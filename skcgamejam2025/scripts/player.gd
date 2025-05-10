@@ -4,9 +4,15 @@ var action_performed: bool = false
 var moved: bool = false
 
 @onready var marker : Sprite2D = $Marker
+@onready var target : Sprite2D = $Target
+
+@export var gun : Gun
+
+var original_position := Vector2.ZERO
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not can_act:
+		target.visible = false
 		marker.visible = false
 		return
 	
@@ -22,30 +28,28 @@ func _unhandled_input(event: InputEvent) -> void:
 	var is_adjacent = delta_tile.length() == Globals.TILE_SIZE and (delta_tile.x == 0 or delta_tile.y == 0)
 
 	if is_adjacent and viewport_rect.has_point(target_tile):
-		marker.global_position = get_tile_center(target_tile)
+		marker.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
 		marker.rotation = delta_tile.angle() + deg_to_rad(90.0)
 		marker.visible = true
+		target.visible = false
+	elif not is_adjacent and not action_performed and viewport_rect.has_point(target_tile) and current_tile != target_tile:
+		target.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
+		target.visible = true
+		marker.visible = false
 	else:
 		marker.visible = false
+		target.visible = false
 		
 	# Handle mouse click to move
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and not moved:
-		try_move_to_tile(target_tile)
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if is_adjacent and not moved:
+			try_move_to_tile(target_tile)
+		elif not is_adjacent and not action_performed:
 
-	# Handle shoot (Shift + direction key)
-	if Input.is_key_pressed(KEY_SHIFT) and not action_performed:
-		if Input.is_action_just_pressed("TOP"):
+			var shoot_dir = (target_tile - current_tile).normalized()
+			#look_at(target_tile + Vector2(Globals.TILE_SIZE / 2, Globals.TILE_SIZE / 2))  # Rotate towards target
 			action_performed = true
-			shoot(Vector2(0, -1))
-		elif Input.is_action_just_pressed("DOWN"):
-			action_performed = true
-			shoot(Vector2(0, 1))
-		elif Input.is_action_just_pressed("LEFT"):
-			action_performed = true
-			shoot(Vector2(-1, 0))
-		elif Input.is_action_just_pressed("RIGHT"):
-			action_performed = true
-			shoot(Vector2(1, 0))
+			shoot(shoot_dir)
 
 func try_move_to_tile(target_tile: Vector2) -> void:
 	var current_tile = get_current_tile()
@@ -62,7 +66,8 @@ func try_move_to_tile(target_tile: Vector2) -> void:
 
 func shoot(direction: Vector2) -> void:
 	print("Shooting in direction %s" % direction)
-	$AnimationPlayer.play("shoot")
+	#$AnimationPlayer.play("shoot")
+	gun.fire()
 	end_turn()
 
 func end_turn():
@@ -72,6 +77,7 @@ func end_turn():
 
 	action_performed = false
 	moved = false
+	TurnManager.unit_finished_turn()
 
 
 func get_tile_center(tile: Vector2) -> Vector2:
