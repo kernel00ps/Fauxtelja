@@ -356,24 +356,24 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_q3c5f")
 animation = &"idle_up"
 
-[node name="attack-right" type="AnimatedSprite2D" parent="."]
+[node name="attack_right" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_sywga")
 animation = &"spit_right"
 offset = Vector2(2, 0)
 
-[node name="attack-left" type="AnimatedSprite2D" parent="."]
+[node name="attack_left" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qo6um")
 animation = &"spit-left"
 offset = Vector2(-2, 0)
 
-[node name="attack-down" type="AnimatedSprite2D" parent="."]
+[node name="attack_down" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5qp75")
 offset = Vector2(0, 2)
 
-[node name="attack-up" type="AnimatedSprite2D" parent="."]
+[node name="attack_up" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_fvr44")
 animation = &"spit-up"

@@ -36,5 +36,25 @@ func shoot() -> void:
 	var to_player = player.global_position - global_position
 	bullet.direction = to_player.normalized()
 
+	var angle = to_player.angle()
+	if abs(angle) < PI / 4:
+		current_direction = "right"
+	elif abs(angle) > 3 * PI / 4:
+		current_direction = "left"
+	elif angle < 0:
+		current_direction = "up"
+	else:
+		current_direction = "down"
+
+	#play_attack_animation(current_direction)
+
 	bullet.position = global_position
 	get_tree().current_scene.add_child(bullet)
+
+func play_attack_animation(direction: String) -> void:
+	var directions = ["up", "down", "left", "right"]
+	for dir in directions:
+		var sprite_node = $"attack_%s" % dir
+		sprite_node.visible = (dir == direction)
+		if dir == direction:
+			sprite_node.play("spit_%s" % dir)
