@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://denbxrqyxelts"]
+
+[ext_resource type="Texture2D" uid="uid://8xpiuu8x53xn" path="res://assets/bullet_ball.png" id="1_3e4ss"]
+[ext_resource type="Script" uid="uid://d26e24eqlqgwl" path="res://scripts/pljuca.gd" id="1_mlwy6"]
+[ext_resource type="PackedScene" uid="uid://dnwekceof8ldp" path="res://assets/particles/pljuca_particle.tscn" id="2_xie0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlwy6"]
+size = Vector2(4, 4)
+
+[node name="Pljuca" type="Area2D"]
+script = ExtResource("1_mlwy6")
+pljuca_effect = ExtResource("2_xie0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_3e4ss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mlwy6")

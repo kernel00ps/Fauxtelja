@@ -1,8 +1,8 @@
 extends Area2D
 
-class_name Bullet
+class_name Pljuca
 
-@export var explosion_effect: PackedScene 
+@export var pljuca_effect: PackedScene 
 @onready var sprite = $Sprite2D
 
 var direction: Vector2 = Vector2.ZERO
@@ -15,18 +15,18 @@ func _process(delta: float) -> void:
 	position += direction * speed * delta
 
 func _on_collision(body: Node) -> void:
-	if body is EnemyUnit:
+	if body is Player:
 		_explode(body)
 		queue_free()
 
-func _explode(enemy : EnemyUnit) -> void:
-	var explosion = explosion_effect.instantiate()
+func _explode(enemy : Player) -> void:
+	var explosion = pljuca_effect.instantiate()
 	explosion.position = position
 	explosion.emitting = false
 	explosion.one_shot = true
 	explosion.emitting = true
 	
-	enemy.die()
+	
 	
 	get_parent().add_child(explosion)
 

@@ -1,6 +1,8 @@
 extends EnemyUnit
 class_name RangedEnemy
 
+var bullet_path = preload("res://scenes/pljuca.tscn")
+
 func start_turn():
 	can_act = true
 	
@@ -17,11 +19,16 @@ func start_turn():
 	var is_cardinal = abs(to_player.x) < Globals.TILE_SIZE * 0.5 or abs(to_player.y) < Globals.TILE_SIZE * 0.5
 
 	if tile_distance <= 3 and is_cardinal:
-		if gun:
-			gun.look_at(player.global_position)
-			gun.fire()
-			print("%s (RangedEnemy) shot at %s" % [self.name, player.name])
+		shoot()
+		print("%s (RangedEnemy) shot at %s" % [self.name, player.name])
 	elif tile_distance <= 5:
 		move_toward_player(player)
 
 	end_turn()
+
+func shoot() -> void:
+	var bullet: Pljuca = bullet_path.instantiate()
+	bullet.direction = Vector2(cos(rotation), sin(rotation))  # Direction based on angle
+
+	bullet.position = get_global_position()
+	get_tree().current_scene.add_child(bullet)
