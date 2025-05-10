@@ -54,3 +54,6 @@ func get_closest_player() -> Node2D:
 			closest = player_unit
 
 	return closest
+
+func die() -> void:
+	queue_free()

@@ -26,6 +26,8 @@ func _explode(enemy : EnemyUnit) -> void:
 	explosion.one_shot = true
 	explosion.emitting = true
 	
+	#enemy.queue_free()
+	
 	get_parent().add_child(explosion)
 
 	explosion.finished.connect( OnFinishedParticle.bind( explosion ) )
