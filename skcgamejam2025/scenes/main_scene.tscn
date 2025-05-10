@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cambitfqiajw"]
+[gd_scene load_steps=7 format=3 uid="uid://cambitfqiajw"]
 
 [ext_resource type="Script" uid="uid://dsf31bx1psaw4" path="res://scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://dk76svg2pv2bn" path="res://scenes/ui.tscn" id="3_7ykc4"]
+[ext_resource type="Texture2D" uid="uid://cdxn77fh5n2y7" path="res://assets/tile_background.png" id="4_gubc5"]
 [ext_resource type="PackedScene" uid="uid://cff4r4xi4l8u7" path="res://scenes/player.tscn" id="4_pu3yx"]
 
 [sub_resource type="Gradient" id="Gradient_7ykc4"]
@@ -20,9 +21,10 @@ script = ExtResource("1_pw63i")
 
 [node name="Player" parent="." instance=ExtResource("4_pu3yx")]
 z_index = 1
-position = Vector2(16, 16)
+position = Vector2(352, 224)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,3 +33,8 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_pu3yx")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_gubc5")
