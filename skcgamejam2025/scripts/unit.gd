@@ -2,7 +2,6 @@ extends CharacterBody2D
 class_name Unit
 
 var can_act: bool = false
-var tile_size: int = 64
 
 func start_turn():
 	can_act = true
