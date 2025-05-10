@@ -28,7 +28,8 @@ window/stretch/mode="viewport"
 
 [gui]
 
-theme/custom_font="uid://wluvnk8upse1"
+fonts/dynamic_fonts/use_oversampling=false
+theme/custom_font="uid://b36owcq0obyfu"
 
 [input]
 
