@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxjfb8f45agmh"]
+
+[ext_resource type="Script" uid="uid://ci4m6ahohi44y" path="res://scripts/button.gd" id="1_27l6r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p38dx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27l6r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wjt2t"]
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 41
+text = "MADE FOR THE
+2025 SKC GAME JAM
+
+DAVID
+VUK
+STEVA
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -50.0
+offset_right = 129.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 21
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p38dx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_27l6r")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wjt2t")
+text = "BACK TO MAIN MENU"
+script = ExtResource("1_27l6r")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
