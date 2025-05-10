@@ -7,8 +7,10 @@ script = ExtResource("1_nt7q6")
 
 [node name="TurnLabel" type="RichTextLabel" parent="."]
 texture_filter = 1
-offset_right = 140.0
-offset_bottom = 77.0
+offset_left = 13.0
+offset_top = 5.0
+offset_right = 169.0
+offset_bottom = 91.0
 text = "TURN: n"
 fit_content = true
 
@@ -17,8 +19,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_left = 1.0
 offset_top = 10.0
-offset_right = -319.0
+offset_right = -333.0
 offset_bottom = 22.0
 grow_horizontal = 2
 scale = Vector2(2, 2)
-alignment = 1
+alignment = 2

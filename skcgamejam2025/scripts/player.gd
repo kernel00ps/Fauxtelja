@@ -110,3 +110,7 @@ func end_turn():
 
 func get_tile_center(tile: Vector2) -> Vector2:
 	return tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
+
+func die() -> void:
+	#TODO: here we need to show the game over screen
+	pass
