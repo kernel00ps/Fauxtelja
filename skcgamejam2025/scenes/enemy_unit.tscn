@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bykjybp7glefc"]
+
+[ext_resource type="Texture2D" uid="uid://exknfn5lid8b" path="res://assets/shonja.png" id="1_41xa3"]
+[ext_resource type="Script" uid="uid://c1mo7wi7wthwb" path="res://scripts/enemy_unit.gd" id="1_bshlu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bshlu"]
+size = Vector2(11, 16)
+
+[node name="EnemyUnit" type="CharacterBody2D"]
+script = ExtResource("1_bshlu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_41xa3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_bshlu")

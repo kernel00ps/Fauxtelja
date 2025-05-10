@@ -1,5 +1,7 @@
 extends Unit
 
+class_name Player
+
 var action_performed: bool = false
 var moved: bool = false
 
@@ -79,7 +81,7 @@ func end_turn():
 
 	action_performed = false
 	moved = false
-	TurnManager.unit_finished_turn()
+	super.end_turn()
 
 func get_tile_center(tile: Vector2) -> Vector2:
 	return tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2

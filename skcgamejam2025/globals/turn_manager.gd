@@ -28,7 +28,7 @@ func start_turn():
 			if enemy_units.is_empty():
 				end_turn()
 			else:
-				enemy_units[current_unit_index].start_turn()
+				await enemy_units[current_unit_index].start_turn()
 	emit_signal("turn_changed", current_state)
 	
 func unit_finished_turn():
