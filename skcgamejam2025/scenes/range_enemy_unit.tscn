@@ -310,6 +310,7 @@ texture = ExtResource("2_0kwgp")
 shape = SubResource("RectangleShape2D_jjmfa")
 
 [node name="idle" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.515625, 0.75, 0.1875, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_q3c5f")
 animation = &"idle_right"

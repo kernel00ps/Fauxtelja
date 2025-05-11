@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dfje40ydhw0pa"]
+[gd_scene load_steps=39 format=3 uid="uid://dfje40ydhw0pa"]
 
 [ext_resource type="Script" uid="uid://db5tyyjc8435w" path="res://scripts/melee_enemy_unit.gd" id="1_e0pp3"]
 [ext_resource type="Texture2D" uid="uid://c1vedqjj2ew3u" path="res://assets/minion_shonja_16x16.png" id="1_potkj"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://ouy4k2lro8y6" path="res://assets/lick_left_32x16.png" id="5_1l2e1"]
 [ext_resource type="Texture2D" uid="uid://c6g1mkveaoct2" path="res://assets/lick_up_16x32.png" id="6_0gns2"]
 [ext_resource type="Texture2D" uid="uid://c2guqdm5gm64x" path="res://assets/lick_down_16x32.png" id="6_gcbxs"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0gns2"]
+blend_mode = 3
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rt2n2"]
 atlas = ExtResource("2_gwm2q")
@@ -259,6 +262,8 @@ animations = [{
 }]
 
 [node name="MeleeEnemyUnit" type="CharacterBody2D"]
+modulate = Color(0.1875, 0.628125, 0.75, 1)
+material = SubResource("CanvasItemMaterial_0gns2")
 script = ExtResource("1_e0pp3")
 metadata/_custom_type_script = "uid://c1mo7wi7wthwb"
 
@@ -274,6 +279,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_potkj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_e0pp3")
 
 [node name="attack_right" type="AnimatedSprite2D" parent="."]
@@ -293,13 +299,9 @@ texture_filter = 1
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_ssyb3")
 animation = &"lick_up"
-frame = 2
-frame_progress = 0.824537
 
 [node name="attack_down" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 9)
 sprite_frames = SubResource("SpriteFrames_wpfwf")
 animation = &"lick-down"
-frame = 6
-frame_progress = 0.292007
