@@ -8,6 +8,7 @@ var sofa_icons = []
 func _ready() -> void:
 	TurnManager.connect("turn_changed", _on_turn_changed);
 	Globals.connect("use_bullet", use_bullet_sprite);
+	Globals.connect("bullet_collected", reload_bullet_sprite);
 	Globals.connect("kill_evil_sofa", use_evil_sofa_sprite);
 	_on_turn_changed(TurnManager.current_state)  
 	init_bullet_sprites()
@@ -53,5 +54,8 @@ func use_bullet_sprite():
 	return
 
 func reload_bullet_sprite():
-	bullet_icons.get(Globals.current_bullets-1).set_full();
-	return
+	if Globals.current_bullets > Globals.max_bullets:
+		return
+	var index = Globals.current_bullets - 1
+	if index >= 0 and index < bullet_icons.size():
+		bullet_icons.get(index).set_full()

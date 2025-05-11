@@ -15,6 +15,7 @@ var original_position := Vector2.ZERO
 
 func _ready():
 	Globals.current_bullets = Globals.max_bullets;
+	Globals.player = self
 	target.visible = false
 	marker.visible = false
 	
@@ -45,8 +46,19 @@ func _unhandled_input(event: InputEvent) -> void:
 			if enemy_tile == target_tile:
 				enemy_found = true
 				break
+				
+		var found_shootable = false
+		var shoot_dir = (target_tile - current_tile).normalized()
+		var target_center = get_tile_center(target_tile)
 
-		if enemy_found:
+		for node in get_tree().get_nodes_in_group("shootable"):
+			if not node.has_method("get_current_tile"):
+				continue
+			if node.get_current_tile() == target_tile:
+				found_shootable = true
+				break
+
+		if enemy_found or found_shootable:
 			target.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
 			marker.visible = false
 			target.visible = true
@@ -73,9 +85,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			if enemy.get_current_tile() == target_tile:
 				enemy_found = true
 				break
+				
+		var found_shootable = false
 
+		for node in get_tree().get_nodes_in_group("shootable"):
+			if not node.has_method("get_current_tile"):
+				continue
+			if node.get_current_tile() == target_tile:
+				found_shootable = true
+				break
+			
 		if not action_performed:
-			if enemy_found:
+			if enemy_found or found_shootable:
 				var shoot_dir = (target_tile - current_tile).normalized()
 				action_performed = true
 				shoot(shoot_dir)

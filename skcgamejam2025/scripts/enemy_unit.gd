@@ -4,10 +4,22 @@ class_name EnemyUnit
 @export var gun: Gun 
 @onready var sprite: AnimatedSprite2D = $idle
 
+@export_range(0.0, 1.0, 0.05)
+var idle_chance: float = 0.0  # 0 = never idle, 1 = always idle
+
+@export var thinking_time_range: Vector2 = Vector2(0.2, 0.6)  # min and max thinking delay in seconds
+
 func start_turn():
 	super.start_turn()
+	
+	var thinking_time = randf_range(thinking_time_range.x, thinking_time_range.y)
+	await get_tree().create_timer(thinking_time).timeout
 
-	await get_tree().create_timer(0.3).timeout
+	# Chance to skip turn
+	if randf() < idle_chance:
+		print("%s (RangedEnemy) skipped turn due to idle chance" % name)
+		end_turn()
+		return
 
 	var player = get_closest_player()
 	if player == null:
@@ -60,6 +72,8 @@ func move_toward_player(player: Node2D) -> void:
 				blocked = true
 				break
 
+		var tile_pos = (new_position - Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2).snapped(Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE))
+		blocked = blocked or is_tile_blocked(tile_pos)
 		if blocked:
 			continue
 
@@ -104,3 +118,9 @@ func die() -> void:
 		queue_free()
 		if was_my_turn:
 			TurnManager.unit_finished_turn()
+
+func is_tile_blocked(tile: Vector2) -> bool:
+	for box in get_tree().get_nodes_in_group("shootable"):
+		if box.has_method("get_current_tile") and box.get_current_tile() == tile:
+			return true
+	return false

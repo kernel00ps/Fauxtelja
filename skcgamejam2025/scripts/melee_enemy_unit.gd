@@ -4,7 +4,14 @@ class_name MeleeEnemy
 func start_turn():
 	can_act = true
 
-	await get_tree().create_timer(0.3).timeout
+	var thinking_time = randf_range(thinking_time_range.x, thinking_time_range.y)
+	await get_tree().create_timer(thinking_time).timeout
+
+	# Chance to skip turn
+	if randf() < idle_chance:
+		print("%s (RangedEnemy) skipped turn due to idle chance" % name)
+		end_turn()
+		return
 
 	var player = get_closest_player()
 	if player == null:

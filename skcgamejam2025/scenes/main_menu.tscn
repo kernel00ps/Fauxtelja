@@ -1,6 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsjn6un3fnb3r"]
+[gd_scene load_steps=7 format=3 uid="uid://bsjn6un3fnb3r"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://bi3g8dvnbk38e" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Shader" path="res://vignette_shader.gdshader" id="2_ekxnf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqqt6"]
+shader = ExtResource("2_ekxnf")
+shader_parameter/inner_radius = 0.1
+shader_parameter/outer_radius = 1.0
+shader_parameter/vignette_strength = 1.0
+shader_parameter/dither_strength = 0.03
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vue75"]
 
@@ -17,16 +26,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
+[node name="Vignette" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bqqt6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = -80.0
-offset_right = 133.0
-offset_bottom = -15.0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 70.0
+offset_right = 59.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -35,7 +58,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_l6cm7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ekxnf")
 text = "PLAY"
-alignment = 0
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -44,7 +66,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_l6cm7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ekxnf")
 text = "CREDITS"
-alignment = 0
 
 [node name="Button3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -53,7 +74,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_vue75")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_l6cm7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ekxnf")
 text = "QUIT"
-alignment = 0
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_credits_button_pressed"]
