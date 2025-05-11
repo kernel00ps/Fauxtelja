@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://drvac06hfwlww"]
+
+[ext_resource type="Script" uid="uid://m603ovp78377" path="res://scripts/bullet_box.gd" id="1_5j5se"]
+[ext_resource type="Texture2D" uid="uid://bxs3eybcj3mw4" path="res://assets/furniture_box.png" id="1_iilg7"]
+[ext_resource type="PackedScene" uid="uid://2mstgwug36vd" path="res://scenes/pickup.tscn" id="2_lbuid"]
+[ext_resource type="PackedScene" uid="uid://c8m2eh3cplh2b" path="res://assets/particles/smoke_particle.tscn" id="3_ug40n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j5se"]
+size = Vector2(12, 12)
+
+[node name="BulletBox" type="Area2D"]
+script = ExtResource("1_5j5se")
+bullet_pickup_scene = ExtResource("2_lbuid")
+break_effect = ExtResource("3_ug40n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_iilg7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5j5se")
