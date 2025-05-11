@@ -11,5 +11,10 @@ const BASE_HEALTH_EXPLOSION: int = 1
 var max_bullets: int = 3;
 var current_bullets: int
 
+var max_evil_sofas: int = 2;
+var current_evil_sofas: int
+
 signal use_bullet()
+signal kill_evil_sofa()
+
 signal died()
