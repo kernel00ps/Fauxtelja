@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsjn6un3fnb3r"]
 
-[ext_resource type="Script" uid="uid://bi3g8dvnbk38e" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vue75"]
 
