@@ -12,6 +12,10 @@ var max_bullets: int = 13;
 var current_bullets: int
 var player : Player = null
 
+var max_evil_sofas: int = 2;
+var current_evil_sofas: int
+
 signal use_bullet()
 signal bullet_collected()
+signal kill_evil_sofa()
 signal died()
