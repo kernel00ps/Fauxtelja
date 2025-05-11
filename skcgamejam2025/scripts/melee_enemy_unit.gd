@@ -23,7 +23,7 @@ func start_turn():
 
 	if tile_distance <= 1:
 		melee_attack()
-		Globals.play_sound.emit('slurp')
+		BackgroundMusic.slurp.emit()
 		print("%s (MeleeEnemy) attacks all adjacent tiles!" % self.name)
 	else:
 		move_toward_player(player)

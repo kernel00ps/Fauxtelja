@@ -136,6 +136,7 @@ func shoot(direction: Vector2) -> void:
 		end_turn()
 	else:
 		Globals.play_sound.emit("nobullets")
+		BackgroundMusic.no_bullets_sound.emit()
 		end_turn();
 
 
@@ -155,6 +156,7 @@ func die() -> void:
 	can_act = false
 	TurnManager.stop_turns()
 	#TODO: add die animation
+	BackgroundMusic.death_sound.emit()
 	Globals.emit_signal("died")
 	Globals.play_sound.emit("death")
 	var screen = game_over_screen.instantiate()
