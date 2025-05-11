@@ -11,8 +11,8 @@ func _ready() -> void:
 	Globals.connect("bullet_collected", reload_bullet_sprite);
 	Globals.connect("kill_evil_sofa", use_evil_sofa_sprite);
 	_on_turn_changed(TurnManager.current_state)  
-	init_bullet_sprites()
-	init_evil_sofa_sprites()
+	#init_bullet_sprites()
+	#init_evil_sofa_sprites()
 
 func _on_turn_changed(state):
 	var label_text := ""

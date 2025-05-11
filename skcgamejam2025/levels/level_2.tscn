@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=4 uid="uid://urgogjmf0o6q"]
+
+[ext_resource type="Script" uid="uid://px36kt0xmqi6" path="res://levels/level_2.gd" id="1_ilhis"]
+[ext_resource type="PackedScene" uid="uid://dk76svg2pv2bn" path="res://scenes/ui.tscn" id="2_ilhis"]
+[ext_resource type="PackedScene" uid="uid://cff4r4xi4l8u7" path="res://scenes/player.tscn" id="3_ep78u"]
+[ext_resource type="Texture2D" uid="uid://cnvax6gh6df4l" path="res://assets/floor_sprites_16x16.png" id="4_dfjjl"]
+[ext_resource type="PackedScene" uid="uid://dfje40ydhw0pa" path="res://scenes/melee_enemy_unit.tscn" id="5_at1ld"]
+[ext_resource type="PackedScene" uid="uid://cocccdv8xeamn" path="res://scenes/passive_sofa_unit.tscn" id="6_ilhis"]
+[ext_resource type="PackedScene" uid="uid://bjyxgpkr3m0g8" path="res://scenes/table_unit.tscn" id="7_ep78u"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcfvj"]
+texture = ExtResource("4_dfjjl")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pa8r4"]
+sources/0 = SubResource("TileSetAtlasSource_fcfvj")
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_ilhis")
+
+[node name="UI" parent="." instance=ExtResource("2_ilhis")]
+
+[node name="Player" parent="." instance=ExtResource("3_ep78u")]
+z_index = 1
+position = Vector2(56, 152)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAGAAcAAAAAAAEAAAAHAAcAAAABAAEAAAAIAAgAAAAAAAAAAAADAAoAAAABAAAAAAADAAgAAAABAAAAAAADAAkAAAABAAEAAAAFAAcAAAABAAEAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAEAAAAHAAgAAAABAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAEAAAAFAAgAAAABAAAAAAAFAAkAAAABAAEAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAEAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAEAAAAHAAoAAAABAAAAAAAHAAsAAAABAAEAAAAIAAcAAAAAAAEAAAAEAAoAAAAAAAAAAAAFAAsAAAABAAEAAAAHAAkAAAABAAEAAAAIAAkAAAAAAAEAAAAFAAoAAAABAAAAAAAJAAkAAAABAAEAAAAJAAoAAAABAAAAAAAJAAsAAAABAAEAAAAJAAcAAAABAAEAAAAJAAgAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_pa8r4")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="MeleeEnemyUnit5" parent="Enemies" instance=ExtResource("5_at1ld")]
+position = Vector2(120, 120)
+idle_chance = 0.8
+
+[node name="idle" parent="Enemies/MeleeEnemyUnit5" index="0"]
+animation = &"idle_down"
+
+[node name="PassiveSofaUnit" parent="Enemies" instance=ExtResource("6_ilhis")]
+position = Vector2(88, 152)
+
+[node name="PassiveSofaUnit2" parent="Enemies" instance=ExtResource("6_ilhis")]
+position = Vector2(136, 168)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit2" index="1"]
+animation = &"idle_left"
+
+[node name="TableUnit" parent="Enemies" instance=ExtResource("7_ep78u")]
+position = Vector2(120, 152)
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[editable path="Enemies/MeleeEnemyUnit5"]
+[editable path="Enemies/PassiveSofaUnit2"]

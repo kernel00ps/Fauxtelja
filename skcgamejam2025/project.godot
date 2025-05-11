@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Globals="*res://globals/globals.gd"
 TurnManager="*res://globals/turn_manager.gd"
+BackgroundMusic="*res://audio/background_music.tscn"
 
 [display]
 
@@ -74,3 +75,4 @@ MOVING={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.0832598, 0.0141233, 0, 1)

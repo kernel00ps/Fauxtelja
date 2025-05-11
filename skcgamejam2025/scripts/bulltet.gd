@@ -40,6 +40,8 @@ func _explode(enemy : EnemyUnit) -> void:
 	
 	enemy.die()
 	
+	BackgroundMusic.bullet_hit_sound.emit()
+	
 	get_parent().add_child(explosion)
 
 	explosion.finished.connect( OnFinishedParticle.bind( explosion ) )

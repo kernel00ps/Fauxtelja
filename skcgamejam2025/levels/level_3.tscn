@@ -1,0 +1,113 @@
+[gd_scene load_steps=14 format=4 uid="uid://68vnkqlf2koa"]
+
+[ext_resource type="Script" uid="uid://byj5w01klrqn5" path="res://levels/level_3.gd" id="1_lfnxh"]
+[ext_resource type="PackedScene" uid="uid://dk76svg2pv2bn" path="res://scenes/ui.tscn" id="2_ofchu"]
+[ext_resource type="PackedScene" uid="uid://cff4r4xi4l8u7" path="res://scenes/player.tscn" id="3_jq78i"]
+[ext_resource type="Texture2D" uid="uid://cnvax6gh6df4l" path="res://assets/floor_sprites_16x16.png" id="4_lsnkt"]
+[ext_resource type="PackedScene" uid="uid://58jlvea4hh84" path="res://scenes/lamp_unit.tscn" id="5_jq78i"]
+[ext_resource type="PackedScene" uid="uid://dfje40ydhw0pa" path="res://scenes/melee_enemy_unit.tscn" id="5_wj73x"]
+[ext_resource type="PackedScene" uid="uid://cocccdv8xeamn" path="res://scenes/passive_sofa_unit.tscn" id="6_0unm6"]
+[ext_resource type="PackedScene" uid="uid://bnlbrwejiowyg" path="res://scenes/nightstand_unit.tscn" id="7_lsnkt"]
+[ext_resource type="PackedScene" uid="uid://bjyxgpkr3m0g8" path="res://scenes/table_unit.tscn" id="7_q42ux"]
+[ext_resource type="PackedScene" uid="uid://cl2kndj6auiad" path="res://scenes/range_enemy_unit.tscn" id="9_wj73x"]
+[ext_resource type="PackedScene" uid="uid://drvac06hfwlww" path="res://scenes/bullet_box.tscn" id="11_wj73x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcfvj"]
+texture = ExtResource("4_lsnkt")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pa8r4"]
+sources/0 = SubResource("TileSetAtlasSource_fcfvj")
+
+[node name="Level3" type="Node2D"]
+script = ExtResource("1_lfnxh")
+
+[node name="UI" parent="." instance=ExtResource("2_ofchu")]
+
+[node name="Player" parent="." instance=ExtResource("3_jq78i")]
+z_index = 1
+position = Vector2(152, 168)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAGAAcAAAAAAAEAAAAHAAcAAAABAAEAAAAIAAgAAAAAAAAAAAADAAgAAAABAAAAAAADAAkAAAABAAEAAAAFAAcAAAABAAEAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAEAAAAHAAgAAAABAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAEAAAAFAAgAAAABAAAAAAAFAAkAAAABAAEAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAEAAAAHAAoAAAABAAAAAAAHAAsAAAABAAEAAAAIAAcAAAAAAAEAAAAEAAoAAAAAAAAAAAAHAAkAAAABAAEAAAAIAAkAAAAAAAEAAAAFAAoAAAABAAAAAAAJAAkAAAABAAEAAAAJAAoAAAABAAAAAAAJAAsAAAABAAEAAAAJAAcAAAABAAEAAAAJAAgAAAABAAAAAAADAAoAAAABAAAAAAAFAAsAAAABAAEAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAEAAAADAAsAAAABAAEAAAADAAwAAAABAAAAAAAEAAsAAAABAAAAAAAEAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAEAAAAJAAwAAAABAAAAAAAJAA0AAAABAAEAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAEAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAEAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAEAAAAKAAcAAAAAAAEAAAAEAAcAAAAAAAEAAAADAAcAAAABAAEAAAADAA0AAAABAAEAAAAEAA0AAAAAAAEAAAAFAAwAAAABAAAAAAAFAA0AAAABAAEAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAEAAAAHAAwAAAABAAAAAAAHAA0AAAABAAEAAAAKAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAABAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAABAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAABAAAAAAADAA4AAAABAAAAAAA=")
+tile_set = SubResource("TileSet_pa8r4")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="LampUnit" parent="Enemies" instance=ExtResource("5_jq78i")]
+position = Vector2(152, 120)
+
+[node name="TableUnit" parent="Enemies" instance=ExtResource("7_q42ux")]
+position = Vector2(88, 168)
+
+[node name="TableUnit2" parent="Enemies" instance=ExtResource("7_q42ux")]
+position = Vector2(120, 216)
+
+[node name="NightstandUnit" parent="Enemies" instance=ExtResource("7_lsnkt")]
+position = Vector2(56, 120)
+
+[node name="NightstandUnit2" parent="Enemies" instance=ExtResource("7_lsnkt")]
+position = Vector2(136, 120)
+
+[node name="PassiveSofaUnit" parent="Enemies" instance=ExtResource("6_0unm6")]
+position = Vector2(72, 168)
+
+[node name="PassiveSofaUnit2" parent="Enemies" instance=ExtResource("6_0unm6")]
+position = Vector2(103, 168)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit2" index="1"]
+animation = &"idle_left"
+
+[node name="RangeEnemyUnit" parent="Enemies" instance=ExtResource("9_wj73x")]
+position = Vector2(72, 120)
+idle_chance = 0.4
+
+[node name="PassiveSofaUnit4" parent="Enemies" instance=ExtResource("6_0unm6")]
+position = Vector2(120, 232)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit4" index="1"]
+position = Vector2(-1, 0)
+animation = &"idle_up"
+
+[node name="PassiveSofaUnit6" parent="Enemies" instance=ExtResource("6_0unm6")]
+position = Vector2(56, 200)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit6" index="1"]
+animation = &"idle_down"
+
+[node name="PassiveSofaUnit3" parent="Enemies" instance=ExtResource("6_0unm6")]
+position = Vector2(120, 120)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit3" index="1"]
+animation = &"idle_down"
+
+[node name="PassiveSofaUnit5" parent="Enemies" instance=ExtResource("6_0unm6")]
+position = Vector2(89, 200)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit5" index="1"]
+position = Vector2(-1, 0)
+animation = &"idle_up"
+
+[node name="MeleeEnemyUnit2" parent="Enemies" instance=ExtResource("5_wj73x")]
+position = Vector2(152, 216)
+
+[node name="MeleeEnemyUnit" parent="Enemies" instance=ExtResource("5_wj73x")]
+position = Vector2(88, 232)
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[node name="BulletBox2" parent="Boxes" instance=ExtResource("11_wj73x")]
+position = Vector2(72, 216)
+
+[node name="BulletBox" parent="Boxes" instance=ExtResource("11_wj73x")]
+position = Vector2(136, 152)
+
+[editable path="Enemies/PassiveSofaUnit2"]
+[editable path="Enemies/PassiveSofaUnit4"]
+[editable path="Enemies/PassiveSofaUnit6"]
+[editable path="Enemies/PassiveSofaUnit3"]
+[editable path="Enemies/PassiveSofaUnit5"]

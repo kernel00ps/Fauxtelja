@@ -13,6 +13,7 @@ var current_speed: float = 0.0
 var time_elapsed := 0.0
 
 func _ready():
+	BackgroundMusic.pickup_sound.emit()
 	var angle = randf() * TAU
 	velocity = Vector2(cos(angle), sin(angle)) * initial_explode_speed
 	current_speed = initial_explode_speed
