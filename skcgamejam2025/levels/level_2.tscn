@@ -38,9 +38,6 @@ tile_set = SubResource("TileSet_pa8r4")
 position = Vector2(120, 120)
 idle_chance = 0.8
 
-[node name="idle" parent="Enemies/MeleeEnemyUnit5" index="0"]
-animation = &"idle_down"
-
 [node name="PassiveSofaUnit" parent="Enemies" instance=ExtResource("6_ilhis")]
 position = Vector2(88, 152)
 

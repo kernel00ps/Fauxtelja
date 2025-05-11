@@ -6,6 +6,7 @@ class_name EnemyUnit
 
 @export_range(0.0, 1.0, 0.05)
 var idle_chance: float = 0.0  # 0 = never idle, 1 = always idle
+var is_evil: bool = true
 
 @export var thinking_time_range: Vector2 = Vector2(0.2, 0.6)  # min and max thinking delay in seconds
 
@@ -116,13 +117,18 @@ func die() -> void:
 	if TurnManager.enemy_units.has(self):
 		var was_my_turn = (TurnManager.enemy_units[TurnManager.current_unit_index] == self)
 		TurnManager.enemy_units.erase(self)
+		evil_sofa_killed()
 		queue_free()
 		if was_my_turn:
 			TurnManager.unit_finished_turn()
-
+		
 func is_tile_blocked(tile: Vector2) -> bool:
 	for box in get_tree().get_nodes_in_group("shootable"):
 		if box.has_method("get_current_tile") and box.get_current_tile() == tile:
 			return true
 	return false
 	
+func evil_sofa_killed() -> void:
+	if is_evil:
+		Globals.current_evil_sofas -= 1
+		Globals.kill_evil_sofa.emit()
