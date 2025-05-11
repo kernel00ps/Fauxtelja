@@ -59,7 +59,10 @@ func clear_evil_sofa_sprites() -> void:
 
 func use_evil_sofa_sprite():
 	sofa_icons.get(Globals.current_evil_sofas).set_empty();
-	return
+	
+	#player won we need to take him to next level
+	if Globals.current_evil_sofas == 0:
+		LevelManager.go_to_next_level()
 
 func use_bullet_sprite():
 	bullet_icons.get(Globals.current_bullets-1).set_empty();

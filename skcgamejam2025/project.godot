@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SKCGameJam2025"
-run/main_scene="uid://cambitfqiajw"
+run/main_scene="uid://bsjn6un3fnb3r"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Globals="*res://globals/globals.gd"
 TurnManager="*res://globals/turn_manager.gd"
 BackgroundMusic="*res://audio/background_music.tscn"
+LevelManager="*res://globals/level_manager.gd"
 
 [display]
 

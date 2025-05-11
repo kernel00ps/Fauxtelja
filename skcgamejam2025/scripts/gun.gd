@@ -20,4 +20,4 @@ func fire() -> void:
 	bullet.position = sprite.get_global_position()
 
 	# Add the bullet to the scene (parent it to the current scene)
-	get_tree().current_scene.add_child(bullet)
+	get_tree().root.add_child(bullet)
