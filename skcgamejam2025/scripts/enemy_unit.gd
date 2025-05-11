@@ -72,6 +72,8 @@ func move_toward_player(player: Node2D) -> void:
 				blocked = true
 				break
 
+		var tile_pos = (new_position - Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2).snapped(Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE))
+		blocked = blocked or is_tile_blocked(tile_pos)
 		if blocked:
 			continue
 
@@ -116,3 +118,9 @@ func die() -> void:
 		queue_free()
 		if was_my_turn:
 			TurnManager.unit_finished_turn()
+
+func is_tile_blocked(tile: Vector2) -> bool:
+	for box in get_tree().get_nodes_in_group("shootable"):
+		if box.has_method("get_current_tile") and box.get_current_tile() == tile:
+			return true
+	return false
