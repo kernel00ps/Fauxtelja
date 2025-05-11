@@ -312,7 +312,7 @@ shape = SubResource("RectangleShape2D_jjmfa")
 [node name="idle" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_q3c5f")
-animation = &"idle_down"
+animation = &"idle_right"
 
 [node name="attack_right" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
