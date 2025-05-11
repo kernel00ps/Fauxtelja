@@ -12,3 +12,4 @@ var max_bullets: int = 3;
 var current_bullets: int
 
 signal use_bullet()
+signal died()

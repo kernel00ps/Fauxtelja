@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cff4r4xi4l8u7"]
+[gd_scene load_steps=12 format=3 uid="uid://cff4r4xi4l8u7"]
 
 [ext_resource type="Script" uid="uid://64gpfnd5lm7r" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://duwklju7v8ysa" path="res://assets/shonja_16x16.png" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://qs2c7l2kln8b" path="res://scenes/game_over_screen.tscn" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://cmpg5wie2xwmg" path="res://assets/tile indicators/indicator_move_straight.png" id="3_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://c58nc58n5sfuf" path="res://assets/tile indicators/indicator_aim.png" id="4_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://baray28svm6kc" path="res://scenes/gun.tscn" id="5_tuyoq"]
@@ -98,6 +99,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
 script = ExtResource("1_g2els")
 gun = NodePath("Gun")
+game_over_screen = ExtResource("2_tuyoq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

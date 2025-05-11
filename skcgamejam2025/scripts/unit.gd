@@ -9,7 +9,9 @@ func start_turn():
 
 func end_turn():
 	can_act = false
-	TurnManager.unit_finished_turn()
+	
+	if not TurnManager.turns_stopped:
+		TurnManager.unit_finished_turn()
 
 func get_current_tile() -> Vector2:
 	return (position - Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2).snapped(Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE))

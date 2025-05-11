@@ -9,6 +9,7 @@ var moved: bool = false
 @onready var target : Sprite2D = $Target
 
 @export var gun : Gun
+@export var game_over_screen: PackedScene
 
 var original_position := Vector2.ZERO
 
@@ -112,5 +113,9 @@ func get_tile_center(tile: Vector2) -> Vector2:
 	return tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
 
 func die() -> void:
-	#TODO: here we need to show the game over screen
-	pass
+	can_act = false
+	TurnManager.stop_turns()
+	#TODO: add die animation
+	Globals.emit_signal("died")
+	var screen = game_over_screen.instantiate()
+	get_tree().current_scene.add_child(screen)
