@@ -15,6 +15,8 @@ var original_position := Vector2.ZERO
 
 func _ready():
 	Globals.current_bullets = Globals.max_bullets;
+	target.visible = false
+	marker.visible = false
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if not can_act:
@@ -35,23 +37,25 @@ func _unhandled_input(event: InputEvent) -> void:
 	var is_adjacent = delta_tile.length() <= Globals.TILE_SIZE * sqrt(2) and delta_tile.length() != 0
 
 	if is_adjacent and viewport_rect.has_point(target_tile):
-		var blocked = false
+		var enemy_found = false
 		for enemy in TurnManager.enemy_units:
 			if enemy == null:
 				continue
 			var enemy_tile = enemy.get_current_tile()
 			if enemy_tile == target_tile:
-				blocked = true
+				enemy_found = true
 				break
-		
-		if blocked:
+
+		if enemy_found:
+			target.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
 			marker.visible = false
-			target.visible = false
+			target.visible = true
 		else:
 			marker.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
 			marker.rotation = delta_tile.angle() - deg_to_rad(90.0)
 			marker.visible = true
 			target.visible = false
+			
 	elif not is_adjacent and not action_performed and viewport_rect.has_point(target_tile) and current_tile != target_tile:
 		target.global_position = target_tile + Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE) / 2
 		target.visible = true
@@ -62,12 +66,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	# Handle mouse click to move
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if is_adjacent and not moved:
-			try_move_to_tile(target_tile)
-		elif not is_adjacent and not action_performed:
-			var shoot_dir = (target_tile - current_tile).normalized()
-			action_performed = true
-			shoot(shoot_dir)
+		var enemy_found = false
+		for enemy in TurnManager.enemy_units:
+			if enemy == null:
+				continue
+			if enemy.get_current_tile() == target_tile:
+				enemy_found = true
+				break
+
+		if not action_performed:
+			if enemy_found:
+				var shoot_dir = (target_tile - current_tile).normalized()
+				action_performed = true
+				shoot(shoot_dir)
+			elif is_adjacent and not moved:
+				try_move_to_tile(target_tile)
 
 func try_move_to_tile(target_tile: Vector2) -> void:
 	for enemy in TurnManager.enemy_units:

@@ -173,7 +173,7 @@ animation = &"idle_down"
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="RangeEnemyUnit" parent="Enemies" instance=ExtResource("7_c16ls")]
-position = Vector2(200, 104)
+position = Vector2(168, 168)
 
 [node name="RangeEnemyUnit2" parent="Enemies" instance=ExtResource("7_c16ls")]
 position = Vector2(104, 200)
