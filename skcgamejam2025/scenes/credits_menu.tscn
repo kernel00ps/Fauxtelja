@@ -47,13 +47,14 @@ alignment = 1
 [node name="Label" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.203922, 0.654902, 0.105882, 1)
 theme_override_font_sizes/font_size = 41
 text = "MADE FOR THE
 2025 SKC GAME JAM
 
 DAVID
-VUK
 STEVA
+VUK
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -72,6 +73,8 @@ offset_right = 129.0
 offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_hover_color = Color(0.866667, 0.12549, 0.113725, 1)
+theme_override_colors/font_color = Color(0.203922, 0.654902, 0.105882, 1)
 theme_override_font_sizes/font_size = 21
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p38dx")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_27l6r")
