@@ -21,4 +21,4 @@ func _on_restart_pressed():
 	TurnManager.start_turn()
 
 func _on_menu_pressed():
-	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
