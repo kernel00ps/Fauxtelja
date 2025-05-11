@@ -96,7 +96,7 @@ func move_toward_player(player: Node2D) -> void:
 		sprite.play()
 
 		print("%s (Enemy) moved toward %s" % [self.name, player.name])
-		Globals.play_sound.emit('step')
+		BackgroundMusic.step.emit()
 		return  # Moved successfully, stop
 
 	print("%s (Enemy) couldn't find path to move!" % self.name)
