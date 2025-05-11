@@ -1,0 +1,50 @@
+[gd_scene load_steps=13 format=3 uid="uid://c8mnu8i5ib4m2"]
+
+[ext_resource type="AudioStream" uid="uid://b0l84guc4pj6k" path="res://audio/music loop 2.mp3" id="1_5tryy"]
+[ext_resource type="Script" uid="uid://pks7pqhoqlyo" path="res://audio/background_music.gd" id="2_3wjmh"]
+[ext_resource type="AudioStream" uid="uid://ufj01tq2fq3y" path="res://audio/sfx/hurt.wav" id="3_x7fwx"]
+[ext_resource type="AudioStream" uid="uid://bs5jsqnefxo5n" path="res://audio/sfx/death.wav" id="4_77fuw"]
+[ext_resource type="AudioStream" uid="uid://0dp0bl2ev8q8" path="res://audio/sfx/bullet_pickup.wav" id="5_spcov"]
+[ext_resource type="AudioStream" uid="uid://csu347i13ybbi" path="res://audio/sfx/no_bullets.wav" id="6_2x64w"]
+[ext_resource type="AudioStream" uid="uid://bgnshw0x1nc7o" path="res://audio/sfx/slurp1.mp3" id="7_yxt6p"]
+[ext_resource type="AudioStream" uid="uid://dp6564b8gohtm" path="res://audio/sfx/slurp2.mp3" id="8_leik8"]
+[ext_resource type="AudioStream" uid="uid://dkynuevmit2rf" path="res://audio/sfx/slurp3.mp3" id="9_68sq1"]
+[ext_resource type="AudioStream" uid="uid://dg87lbp08qikh" path="res://audio/sfx/pljuca1.mp3" id="10_o0mqw"]
+[ext_resource type="AudioStream" uid="uid://gnco1g37xtjb" path="res://audio/sfx/pljuca2.mp3" id="11_04id2"]
+[ext_resource type="AudioStream" uid="uid://8gqoqhno0a28" path="res://audio/sfx/pljuca3.mp3" id="12_efyac"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_5tryy")
+volume_db = -5.0
+autoplay = true
+script = ExtResource("2_3wjmh")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_x7fwx")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_77fuw")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_spcov")
+
+[node name="NoBulletsSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_2x64w")
+
+[node name="SlurpSound1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_yxt6p")
+
+[node name="SlurpSound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_leik8")
+
+[node name="SlurpSound3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_68sq1")
+
+[node name="PljucaSound1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_o0mqw")
+
+[node name="PljucaSound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_04id2")
+
+[node name="PljucaSound3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_efyac")
