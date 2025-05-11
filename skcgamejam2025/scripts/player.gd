@@ -120,7 +120,7 @@ func try_move_to_tile(target_tile: Vector2) -> void:
 		if viewport_rect.has_point(target_tile):
 			position = get_tile_center(target_tile)
 			moved = true
-			Globals.play_sound.emit('step');
+			BackgroundMusic.step.emit()
 			end_turn()
 	else:
 		print("Invalid move. Must be to an adjacent tile.")
