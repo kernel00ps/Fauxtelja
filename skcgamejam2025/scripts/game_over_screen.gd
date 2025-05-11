@@ -15,6 +15,10 @@ func show_death_ui():
 
 func _on_restart_pressed():
 	get_tree().reload_current_scene()
+	Globals.player.can_act = true
+	TurnManager.turns_stopped = false
+	TurnManager.current_state = TurnManager.TurnState.PLAYER
+	TurnManager.start_turn()
 
 func _on_menu_pressed():
-	get_tree().change_scene_to_file("res://scenes/main_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

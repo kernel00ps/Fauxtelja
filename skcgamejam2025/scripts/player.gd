@@ -139,7 +139,6 @@ func shoot(direction: Vector2) -> void:
 		BackgroundMusic.no_bullets_sound.emit()
 		end_turn();
 
-
 func end_turn():
 	if not action_performed and not moved:
 		print("Action or movement required before ending turn!")
@@ -147,6 +146,7 @@ func end_turn():
 
 	action_performed = false
 	moved = false
+	
 	super.end_turn()
 
 func get_tile_center(tile: Vector2) -> Vector2:
