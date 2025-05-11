@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SKCGameJam2025"
-run/main_scene="uid://cambitfqiajw"
+run/main_scene="uid://bsjn6un3fnb3r"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
