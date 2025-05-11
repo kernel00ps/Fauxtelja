@@ -11,7 +11,7 @@ func start_turn():
 
 	# Chance to skip turn
 	if randf() < idle_chance:
-		print("%s (RangedEnemy) skipped turn due to idle chance" % name)
+		print("%s (MeleeEnemy) skipped turn due to idle chance" % name)
 		end_turn()
 		return
 
@@ -23,36 +23,42 @@ func start_turn():
 	var to_player = player.global_position - global_position
 	var tile_distance = int(to_player.length() / Globals.TILE_SIZE)
 
-	if tile_distance <= 1:
-		var angle = to_player.angle()
-		var dir_str: String
-		if abs(angle) < PI / 4:
+	# Explicit check for cardinal direction based on position differences (x or y)
+	var dir_str: String
+	if abs(to_player.x) > abs(to_player.y):  # Mostly horizontal
+		if to_player.x > 0:
 			dir_str = "right"
-		elif abs(angle) > 3 * PI / 4:
-			dir_str = "left"
-		elif angle < 0:
-			dir_str = "up"
 		else:
+			dir_str = "left"
+	# if mostly vertical, check for up or down
+	elif abs(to_player.y) > abs(to_player.x):  # Mostly vertical
+		if to_player.y > 0:
 			dir_str = "down"
+		else:
+			dir_str = "up"
+	else:
+		# Diagonal directions, don't attack
+		print("%s (MeleeEnemy) cannot attack diagonally!" % self.name)
+		move_toward_player(player)
+		end_turn()
+		return
+	
+	if tile_distance <= 1:
 		face_direction(dir_str)
 		play_attack_animation(dir_str)
-		melee_attack()
+		melee_attack()  # Perform melee attack
 		BackgroundMusic.slurp.emit()
-		print("%s (MeleeEnemy) attacks all adjacent tiles!" % self.name)
+		print("%s (MeleeEnemy) attacks adjacent tiles!" % self.name)
 	else:
 		move_toward_player(player)
 	end_turn()
-	
+
 func melee_attack() -> void:
 	var directions = [
-	Vector2(Globals.TILE_SIZE, 0),
-	Vector2(-Globals.TILE_SIZE, 0),
-	Vector2(0, Globals.TILE_SIZE),
-	Vector2(0, -Globals.TILE_SIZE),
-	Vector2(Globals.TILE_SIZE, Globals.TILE_SIZE),
-	Vector2(Globals.TILE_SIZE, -Globals.TILE_SIZE),
-	Vector2(-Globals.TILE_SIZE, Globals.TILE_SIZE),
-	Vector2(-Globals.TILE_SIZE, -Globals.TILE_SIZE)
+		Vector2(Globals.TILE_SIZE, 0),  # Right
+		Vector2(-Globals.TILE_SIZE, 0),  # Left
+		Vector2(0, Globals.TILE_SIZE),  # Down
+		Vector2(0, -Globals.TILE_SIZE)  # Up
 	]
 
 	var space_state = get_world_2d().direct_space_state
@@ -70,7 +76,7 @@ func melee_attack() -> void:
 		for result in results:
 			if result.collider is Player:
 				result.collider.die()
-				
+
 func face_direction(direction: String) -> void:
 	var anim_name = "idle_%s" % direction
 	if body_sprite.sprite_frames.has_animation(anim_name):
