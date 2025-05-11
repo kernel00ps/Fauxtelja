@@ -1,11 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt1t6bclwdy80"]
+[gd_scene load_steps=11 format=3 uid="uid://bksx60ii5qvp4"]
 
 [ext_resource type="Script" uid="uid://cdu2suv6rp0ph" path="res://scripts/explosion_enemy_unit.gd" id="1_3i8ta"]
 [ext_resource type="PackedScene" uid="uid://baoyfqkev5rb4" path="res://assets/particles/big_smoke_particle.tscn" id="2_ejr3x"]
 [ext_resource type="Texture2D" uid="uid://exknfn5lid8b" path="res://assets/shonja.png" id="2_qo8f5"]
+[ext_resource type="Texture2D" uid="uid://dqud4soff0ss7" path="res://assets/sofa_16x16.png" id="4_ejr3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejr3x"]
-size = Vector2(11, 16)
+size = Vector2(14, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt2n2"]
+atlas = ExtResource("4_ejr3x")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c16ls"]
+atlas = ExtResource("4_ejr3x")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18nlu"]
+atlas = ExtResource("4_ejr3x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1pb6"]
+atlas = ExtResource("4_ejr3x")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbs2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt2n2")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c16ls")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18nlu")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1pb6")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}]
 
 [node name="ExplosionEnemyUnit" type="CharacterBody2D"]
 script = ExtResource("1_3i8ta")
@@ -13,10 +65,17 @@ explosion_effect = ExtResource("2_ejr3x")
 metadata/_custom_type_script = "uid://c1mo7wi7wthwb"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_qo8f5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ejr3x")
+
+[node name="idle" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.75, 0.1875, 0.1875, 1)
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_bbs2w")
+animation = &"idle_down"
