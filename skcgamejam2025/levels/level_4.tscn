@@ -1,0 +1,130 @@
+[gd_scene load_steps=14 format=4 uid="uid://qv7iumnqfv1q"]
+
+[ext_resource type="Script" uid="uid://b3dnnhhnyax0k" path="res://levels/level_4.gd" id="1_04hp8"]
+[ext_resource type="PackedScene" uid="uid://dk76svg2pv2bn" path="res://scenes/ui.tscn" id="1_ng40l"]
+[ext_resource type="PackedScene" uid="uid://cff4r4xi4l8u7" path="res://scenes/player.tscn" id="2_04hp8"]
+[ext_resource type="Texture2D" uid="uid://cnvax6gh6df4l" path="res://assets/floor_sprites_16x16.png" id="3_8hlpj"]
+[ext_resource type="PackedScene" uid="uid://58jlvea4hh84" path="res://scenes/lamp_unit.tscn" id="4_qhnv2"]
+[ext_resource type="PackedScene" uid="uid://bjyxgpkr3m0g8" path="res://scenes/table_unit.tscn" id="5_vru0x"]
+[ext_resource type="PackedScene" uid="uid://bnlbrwejiowyg" path="res://scenes/nightstand_unit.tscn" id="6_5oqfd"]
+[ext_resource type="PackedScene" uid="uid://cocccdv8xeamn" path="res://scenes/passive_sofa_unit.tscn" id="7_8mt0c"]
+[ext_resource type="PackedScene" uid="uid://cl2kndj6auiad" path="res://scenes/range_enemy_unit.tscn" id="8_dp2yl"]
+[ext_resource type="PackedScene" uid="uid://dfje40ydhw0pa" path="res://scenes/melee_enemy_unit.tscn" id="9_a7qdg"]
+[ext_resource type="PackedScene" uid="uid://drvac06hfwlww" path="res://scenes/bullet_box.tscn" id="10_g1ha7"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52a3b"]
+texture = ExtResource("3_8hlpj")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3ff1r"]
+sources/0 = SubResource("TileSetAtlasSource_52a3b")
+
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_04hp8")
+
+[node name="UI" parent="." instance=ExtResource("1_ng40l")]
+
+[node name="Player" parent="." instance=ExtResource("2_04hp8")]
+z_index = 1
+position = Vector2(56, 168)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAGAAcAAAAAAAEAAAAHAAcAAAABAAEAAAAIAAgAAAAAAAAAAAADAAgAAAABAAAAAAADAAkAAAABAAEAAAAFAAcAAAABAAEAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAEAAAAHAAgAAAABAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAEAAAAFAAgAAAABAAAAAAAFAAkAAAABAAEAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAEAAAAHAAoAAAABAAAAAAAHAAsAAAABAAEAAAAIAAcAAAAAAAEAAAAEAAoAAAAAAAAAAAAHAAkAAAABAAEAAAAIAAkAAAAAAAEAAAAFAAoAAAABAAAAAAAJAAkAAAABAAEAAAAJAAoAAAABAAAAAAAJAAsAAAABAAEAAAAJAAcAAAABAAEAAAAJAAgAAAABAAAAAAADAAoAAAABAAAAAAAFAAsAAAABAAEAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAEAAAADAAsAAAABAAEAAAADAAwAAAABAAAAAAAEAAsAAAABAAAAAAAEAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAEAAAAJAAwAAAABAAAAAAAJAA0AAAABAAEAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAEAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAEAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAEAAAAKAAcAAAAAAAEAAAAEAAcAAAAAAAEAAAADAAcAAAABAAEAAAADAA0AAAABAAEAAAAEAA0AAAAAAAEAAAAFAAwAAAABAAAAAAAFAA0AAAABAAEAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAEAAAAHAAwAAAABAAAAAAAHAA0AAAABAAEAAAAKAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAABAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAABAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAABAAAAAAADAA4AAAABAAAAAAA=")
+tile_set = SubResource("TileSet_3ff1r")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="LampUnit" parent="Enemies" instance=ExtResource("4_qhnv2")]
+position = Vector2(56, 120)
+
+[node name="TableUnit" parent="Enemies" instance=ExtResource("5_vru0x")]
+position = Vector2(88, 216)
+
+[node name="TableUnit2" parent="Enemies" instance=ExtResource("5_vru0x")]
+position = Vector2(120, 216)
+
+[node name="NightstandUnit" parent="Enemies" instance=ExtResource("6_5oqfd")]
+position = Vector2(72, 232)
+
+[node name="NightstandUnit2" parent="Enemies" instance=ExtResource("6_5oqfd")]
+position = Vector2(152, 168)
+
+[node name="PassiveSofaUnit2" parent="Enemies" instance=ExtResource("7_8mt0c")]
+position = Vector2(103, 168)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit2" index="1"]
+animation = &"idle_left"
+
+[node name="RangeEnemyUnit" parent="Enemies" instance=ExtResource("8_dp2yl")]
+position = Vector2(72, 120)
+idle_chance = 0.4
+
+[node name="PassiveSofaUnit4" parent="Enemies" instance=ExtResource("7_8mt0c")]
+position = Vector2(89, 232)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit4" index="1"]
+position = Vector2(-1, 0)
+animation = &"idle_up"
+
+[node name="PassiveSofaUnit3" parent="Enemies" instance=ExtResource("7_8mt0c")]
+position = Vector2(120, 120)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit3" index="1"]
+animation = &"idle_down"
+
+[node name="PassiveSofaUnit5" parent="Enemies" instance=ExtResource("7_8mt0c")]
+position = Vector2(89, 200)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit5" index="1"]
+position = Vector2(-1, 0)
+animation = &"idle_down"
+
+[node name="MeleeEnemyUnit2" parent="Enemies" instance=ExtResource("9_a7qdg")]
+position = Vector2(136, 200)
+
+[node name="LampUnit2" parent="Enemies" instance=ExtResource("4_qhnv2")]
+position = Vector2(104, 215)
+
+[node name="LampUnit3" parent="Enemies" instance=ExtResource("4_qhnv2")]
+position = Vector2(168, 120)
+
+[node name="MeleeEnemyUnit" parent="Enemies" instance=ExtResource("9_a7qdg")]
+position = Vector2(88, 184)
+
+[node name="MeleeEnemyUnit3" parent="Enemies" instance=ExtResource("9_a7qdg")]
+position = Vector2(88, 152)
+
+[node name="idle" parent="Enemies/MeleeEnemyUnit3" index="0"]
+animation = &"idle_down"
+
+[node name="TableUnit3" parent="Enemies" instance=ExtResource("5_vru0x")]
+position = Vector2(88, 168)
+
+[node name="PassiveSofaUnit6" parent="Enemies" instance=ExtResource("7_8mt0c")]
+position = Vector2(121, 232)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit6" index="1"]
+position = Vector2(-1, 0)
+animation = &"idle_up"
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[node name="BulletBox2" parent="Boxes" instance=ExtResource("10_g1ha7")]
+position = Vector2(72, 216)
+
+[node name="BulletBox" parent="Boxes" instance=ExtResource("10_g1ha7")]
+position = Vector2(136, 152)
+
+[node name="BulletBox3" parent="Boxes" instance=ExtResource("10_g1ha7")]
+position = Vector2(88, 136)
+
+[editable path="Enemies/PassiveSofaUnit2"]
+[editable path="Enemies/PassiveSofaUnit4"]
+[editable path="Enemies/PassiveSofaUnit3"]
+[editable path="Enemies/PassiveSofaUnit5"]
+[editable path="Enemies/MeleeEnemyUnit3"]
+[editable path="Enemies/PassiveSofaUnit6"]
