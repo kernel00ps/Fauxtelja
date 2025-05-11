@@ -1,0 +1,139 @@
+[gd_scene load_steps=13 format=4 uid="uid://db8w2mkh5uvqo"]
+
+[ext_resource type="Script" uid="uid://car3kca8tyqbm" path="res://level_5.gd" id="1_8vr3t"]
+[ext_resource type="PackedScene" uid="uid://dk76svg2pv2bn" path="res://scenes/ui.tscn" id="2_a58qw"]
+[ext_resource type="PackedScene" uid="uid://cff4r4xi4l8u7" path="res://scenes/player.tscn" id="3_ij65d"]
+[ext_resource type="Texture2D" uid="uid://cnvax6gh6df4l" path="res://assets/floor_sprites_16x16.png" id="4_gci8k"]
+[ext_resource type="PackedScene" uid="uid://dfje40ydhw0pa" path="res://scenes/melee_enemy_unit.tscn" id="5_gder6"]
+[ext_resource type="PackedScene" uid="uid://bjyxgpkr3m0g8" path="res://scenes/table_unit.tscn" id="6_hv08k"]
+[ext_resource type="PackedScene" uid="uid://bnlbrwejiowyg" path="res://scenes/nightstand_unit.tscn" id="7_p0827"]
+[ext_resource type="PackedScene" uid="uid://58jlvea4hh84" path="res://scenes/lamp_unit.tscn" id="8_brp6y"]
+[ext_resource type="PackedScene" uid="uid://cocccdv8xeamn" path="res://scenes/passive_sofa_unit.tscn" id="9_mgx0j"]
+[ext_resource type="PackedScene" uid="uid://drvac06hfwlww" path="res://scenes/bullet_box.tscn" id="10_k3t65"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52a3b"]
+texture = ExtResource("4_gci8k")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3ff1r"]
+sources/0 = SubResource("TileSetAtlasSource_52a3b")
+
+[node name="Level5" type="Node2D"]
+script = ExtResource("1_8vr3t")
+
+[node name="UI" parent="." instance=ExtResource("2_a58qw")]
+
+[node name="Player" parent="." instance=ExtResource("3_ij65d")]
+z_index = 1
+position = Vector2(120, 168)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAGAAcAAAAAAAEAAAAHAAcAAAABAAEAAAAIAAgAAAAAAAAAAAADAAgAAAABAAAAAAADAAkAAAABAAEAAAAFAAcAAAABAAEAAAAGAAgAAAAAAAAAAAAGAAkAAAAAAAEAAAAHAAgAAAABAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAEAAAAFAAgAAAABAAAAAAAFAAkAAAABAAEAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAEAAAAHAAoAAAABAAAAAAAHAAsAAAABAAEAAAAIAAcAAAAAAAEAAAAEAAoAAAAAAAAAAAAHAAkAAAABAAEAAAAIAAkAAAAAAAEAAAAFAAoAAAABAAAAAAAJAAkAAAABAAEAAAAJAAoAAAABAAAAAAAJAAsAAAABAAEAAAAJAAcAAAABAAEAAAAJAAgAAAABAAAAAAADAAoAAAABAAAAAAAFAAsAAAABAAEAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAEAAAADAAsAAAABAAEAAAADAAwAAAABAAAAAAAEAAsAAAABAAAAAAAEAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAEAAAAJAAwAAAABAAAAAAAJAA0AAAABAAEAAAAKAAwAAAAAAAAAAAAKAA0AAAAAAAEAAAAKAAoAAAAAAAAAAAAKAAsAAAAAAAEAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAEAAAAKAAcAAAAAAAEAAAAEAAcAAAAAAAEAAAADAAcAAAABAAEAAAADAA0AAAABAAEAAAAEAA0AAAAAAAEAAAAFAAwAAAABAAAAAAAFAA0AAAABAAEAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAEAAAAHAAwAAAABAAAAAAAHAA0AAAABAAEAAAAKAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAABAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAABAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAABAAAAAAADAA4AAAABAAAAAAALAA0AAAAAAAAAAAALAA4AAAAAAAEAAAAMAA0AAAABAAAAAAAMAA4AAAABAAEAAAALAAsAAAAAAAAAAAALAAwAAAAAAAEAAAAMAAsAAAABAAAAAAAMAAwAAAABAAEAAAALAAkAAAAAAAAAAAALAAoAAAAAAAEAAAAMAAkAAAABAAAAAAAMAAoAAAABAAEAAAALAAcAAAAAAAAAAAALAAgAAAAAAAEAAAAMAAcAAAABAAAAAAAMAAgAAAABAAEAAAALAAUAAAAAAAAAAAALAAYAAAAAAAEAAAAMAAUAAAABAAAAAAAMAAYAAAABAAEAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAEAAAAKAAUAAAABAAAAAAAKAAYAAAABAAEAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAEAAAAIAAUAAAABAAAAAAAIAAYAAAABAAEAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAEAAAAGAAUAAAABAAAAAAAGAAYAAAABAAEAAAADAAUAAAAAAAAAAAADAAYAAAAAAAEAAAAEAAUAAAABAAAAAAAEAAYAAAABAAEAAAACAAUAAAABAAAAAAACAAYAAAABAAEAAAACAAcAAAABAAAAAAACAAgAAAABAAEAAAACAAkAAAABAAAAAAACAAoAAAABAAEAAAACAAsAAAABAAAAAAACAAwAAAABAAEAAAACAA0AAAABAAAAAAACAA4AAAABAAEAAAACAA8AAAABAAAAAAADAA8AAAAAAAAAAAAEAA8AAAABAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAABAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAABAAAAAAAJAA8AAAAAAAAAAAAKAA8AAAABAAAAAAALAA8AAAAAAAAAAAAMAA8AAAABAAAAAAA=")
+tile_set = SubResource("TileSet_3ff1r")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="MeleeEnemyUnit" parent="Enemies" instance=ExtResource("5_gder6")]
+position = Vector2(136, 200)
+
+[node name="MeleeEnemyUnit2" parent="Enemies" instance=ExtResource("5_gder6")]
+position = Vector2(152, 200)
+
+[node name="MeleeEnemyUnit3" parent="Enemies" instance=ExtResource("5_gder6")]
+position = Vector2(168, 168)
+
+[node name="idle" parent="Enemies/MeleeEnemyUnit3" index="0"]
+animation = &"idle_left"
+
+[node name="MeleeEnemyUnit4" parent="Enemies" instance=ExtResource("5_gder6")]
+position = Vector2(168, 152)
+
+[node name="idle" parent="Enemies/MeleeEnemyUnit4" index="0"]
+animation = &"idle_left"
+
+[node name="MeleeEnemyUnit5" parent="Enemies" instance=ExtResource("5_gder6")]
+position = Vector2(136, 120)
+
+[node name="idle" parent="Enemies/MeleeEnemyUnit5" index="0"]
+animation = &"idle_down"
+
+[node name="MeleeEnemyUnit6" parent="Enemies" instance=ExtResource("5_gder6")]
+position = Vector2(120, 104)
+
+[node name="idle" parent="Enemies/MeleeEnemyUnit6" index="0"]
+animation = &"idle_down"
+
+[node name="MeleeEnemyUnit7" parent="Enemies" instance=ExtResource("5_gder6")]
+position = Vector2(72, 152)
+
+[node name="idle" parent="Enemies/MeleeEnemyUnit7" index="0"]
+animation = &"idle_right"
+
+[node name="MeleeEnemyUnit8" parent="Enemies" instance=ExtResource("5_gder6")]
+position = Vector2(56, 168)
+
+[node name="idle" parent="Enemies/MeleeEnemyUnit8" index="0"]
+animation = &"idle_right"
+
+[node name="MeleeEnemyUnit9" parent="Enemies" instance=ExtResource("5_gder6")]
+position = Vector2(88, 120)
+
+[node name="idle" parent="Enemies/MeleeEnemyUnit9" index="0"]
+animation = &"idle_down"
+
+[node name="TableUnit" parent="Enemies" instance=ExtResource("6_hv08k")]
+position = Vector2(88, 136)
+
+[node name="NightstandUnit" parent="Enemies" instance=ExtResource("7_p0827")]
+position = Vector2(168, 184)
+
+[node name="NightstandUnit2" parent="Enemies" instance=ExtResource("7_p0827")]
+position = Vector2(152, 120)
+
+[node name="TableUnit2" parent="Enemies" instance=ExtResource("6_hv08k")]
+position = Vector2(152, 136)
+
+[node name="LampUnit" parent="Enemies" instance=ExtResource("8_brp6y")]
+position = Vector2(88, 200)
+
+[node name="PassiveSofaUnit" parent="Enemies" instance=ExtResource("9_mgx0j")]
+position = Vector2(72, 184)
+
+[node name="TableUnit3" parent="Enemies" instance=ExtResource("6_hv08k")]
+position = Vector2(88, 184)
+
+[node name="TableUnit4" parent="Enemies" instance=ExtResource("6_hv08k")]
+position = Vector2(184, 168)
+
+[node name="PassiveSofaUnit2" parent="Enemies" instance=ExtResource("9_mgx0j")]
+position = Vector2(120, 200)
+
+[node name="PassiveSofaUnit3" parent="Enemies" instance=ExtResource("9_mgx0j")]
+position = Vector2(104, 104)
+
+[node name="idle" parent="Enemies/PassiveSofaUnit3" index="1"]
+animation = &"idle_down"
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[node name="BulletBox2" parent="Boxes" instance=ExtResource("10_k3t65")]
+position = Vector2(104, 184)
+
+[node name="BulletBox" parent="Boxes" instance=ExtResource("10_k3t65")]
+position = Vector2(120, 152)
+
+[node name="BulletBox3" parent="Boxes" instance=ExtResource("10_k3t65")]
+position = Vector2(136, 168)
+
+[editable path="Enemies/MeleeEnemyUnit3"]
+[editable path="Enemies/MeleeEnemyUnit4"]
+[editable path="Enemies/MeleeEnemyUnit5"]
+[editable path="Enemies/MeleeEnemyUnit6"]
+[editable path="Enemies/MeleeEnemyUnit7"]
+[editable path="Enemies/MeleeEnemyUnit8"]
+[editable path="Enemies/MeleeEnemyUnit9"]
+[editable path="Enemies/PassiveSofaUnit3"]
