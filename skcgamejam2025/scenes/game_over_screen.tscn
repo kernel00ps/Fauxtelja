@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bclqbcxigjs6h" path="res://scripts/game_over_screen.gd" id="1_61w2s"]
 [ext_resource type="Texture2D" uid="uid://duwklju7v8ysa" path="res://assets/shonja_16x16.png" id="1_iwahs"]
-[ext_resource type="Texture2D" uid="uid://dddkcmyduxclf" path="res://assets/you_died.png" id="2_jw6e5"]
+[ext_resource type="Texture2D" uid="uid://b2ejvv3qpmxi0" path="res://assets/you_died-2.png" id="2_jw6e5"]
 
 [node name="GameOverScreen" type="CanvasLayer"]
 script = ExtResource("1_61w2s")
@@ -36,21 +36,21 @@ scale = Vector2(10, 10)
 texture = ExtResource("1_iwahs")
 
 [node name="RestartButton" type="Button" parent="."]
-self_modulate = Color(1, 1, 1, 0.784314)
+self_modulate = Color(1, 1, 1, 0.705882)
 offset_left = 15.0
-offset_top = 270.0
-offset_right = 183.0
+offset_top = 285.0
+offset_right = 165.0
 offset_bottom = 345.0
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.866667, 0.12549, 0.113725, 1)
 theme_override_colors/font_color = Color(0.203922, 0.654902, 0.105882, 1)
 text = "RESTART"
 
 [node name="MenuButton" type="Button" parent="."]
-self_modulate = Color(1, 1, 1, 0.784314)
+self_modulate = Color(1, 1, 1, 0.705882)
 offset_left = 457.0
-offset_top = 270.0
-offset_right = 625.0
+offset_top = 285.0
+offset_right = 607.0
 offset_bottom = 345.0
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.866667, 0.12549, 0.113725, 1)
 theme_override_colors/font_color = Color(0.203922, 0.654902, 0.105882, 1)
 text = "MAIN MENU"
