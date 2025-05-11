@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://de0wske8750j"]
+[gd_scene load_steps=7 format=3 uid="uid://de0wske8750j"]
 
 [ext_resource type="Script" path="res://scripts/button.gd" id="1_sprvt"]
 [ext_resource type="Texture2D" uid="uid://c20y6fa6v30td" path="res://assets/ikea_hat_shonja_16x16.png" id="2_8rauv"]
+[ext_resource type="Texture2D" uid="uid://d2vgv8vfh0gd2" path="res://assets/sofa_solo.png" id="3_byur2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8rauv"]
 
@@ -45,19 +46,72 @@ script = ExtResource("1_sprvt")
 
 [node name="shonja" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(50, 100)
+position = Vector2(25, 36)
 scale = Vector2(3, 3)
 texture = ExtResource("2_8rauv")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 100.0
-offset_right = 616.0
-offset_bottom = 114.0
+[node name="shonja label" type="Label" parent="."]
+offset_left = 55.0
+offset_top = 36.0
+offset_right = 587.0
+offset_bottom = 50.0
 theme_override_colors/font_color = Color(0.203922, 0.654902, 0.105882, 1)
-text = "<- you. a poor, unsuspecting dorma fideale worker"
+text = "<- you. a poor, unsuspecting dorma fideale worker."
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="green sofa" type="Sprite2D" parent="."]
+modulate = Color(0.609375, 0.75, 0.1875, 1)
+texture_filter = 1
+position = Vector2(25, 96)
+scale = Vector2(3, 3)
+texture = ExtResource("3_byur2")
+
+[node name="green label" type="Label" parent="."]
+offset_left = 55.0
+offset_top = 86.0
+offset_right = 581.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0.203922, 0.654902, 0.105882, 1)
+text = "<- ranged sofa. will spit on you."
+
+[node name="blue sofa" type="Sprite2D" parent="."]
+modulate = Color(0.1875, 0.628125, 0.75, 1)
+texture_filter = 1
+position = Vector2(25, 156)
+scale = Vector2(3, 3)
+texture = ExtResource("3_byur2")
+
+[node name="blue label" type="Label" parent="."]
+offset_left = 55.0
+offset_top = 146.0
+offset_right = 581.0
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(0.203922, 0.654902, 0.105882, 1)
+text = "<- melee sofa. will try to devour you."
+
+[node name="red sofa2" type="Sprite2D" parent="."]
+modulate = Color(0.75, 0.1875, 0.1875, 1)
+texture_filter = 1
+position = Vector2(25, 216)
+scale = Vector2(3, 3)
+texture = ExtResource("3_byur2")
+
+[node name="red label2" type="Label" parent="."]
+offset_left = 55.0
+offset_top = 206.0
+offset_right = 629.0
+offset_bottom = 237.0
+theme_override_colors/font_color = Color(0.203922, 0.654902, 0.105882, 1)
+text = "<- explosive sofa. will give you the kaczynski special.
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+self_modulate = Color(0.203922, 0.654902, 0.105882, 1)
+layout_mode = 0
+offset_left = 3.0
+offset_top = 255.0
+offset_right = 623.0
+offset_bottom = 295.0
+text = "click on tiles to move. click on enemies to shoot. destroy boxes to find ammo. kill all enemies. good luck."
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
