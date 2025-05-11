@@ -26,12 +26,13 @@ func _on_collision(body: Node) -> void:
 
 func _explode(enemy : EnemyUnit) -> void:
 	
-	var explosion;
+	var gpu_particles: GPUParticles2D
 	
-	if enemy is AfkUnit:
-		explosion = explosion_effect.instantiate()
-	else:
-		explosion = explosion_effect.instantiate()
+	var explosion = explosion_effect.instantiate()
+
+	#if not enemy.is_evil:
+		#explosion.self_modulate = Color(0.95, 0.95, 0.95, 1.0)
+		
 	
 	explosion.position = position
 	explosion.emitting = false
