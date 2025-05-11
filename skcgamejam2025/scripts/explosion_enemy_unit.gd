@@ -24,7 +24,23 @@ func start_turn():
 	end_turn()
 
 func _explode():
-	var explosion = explosion_effect.instantiate()
-	explosion.global_position = global_position
-	get_tree().current_scene.add_child(explosion)
+	var fx = explosion_effect.instantiate()
+	fx.global_position = global_position
+	fx.one_shot = true
+	fx.emitting = true
+
+	get_parent().add_child(fx)
+	fx.finished.connect(OnFinishedParticle.bind(fx))
+
+	for player in TurnManager.player_units:
+		var dist = global_position.distance_to(player.global_position)
+		if dist <= Globals.TILE_SIZE * 2:
+			if player.has_method("die"):
+				player.die()
+
 	queue_free()
+
+func OnFinishedParticle( explosion ):
+	remove_child( explosion )
+	explosion.queue_free()
+	

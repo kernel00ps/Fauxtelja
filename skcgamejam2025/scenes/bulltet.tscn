@@ -1,11 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://btskpdqy7wl1g"]
+[gd_scene load_steps=9 format=3 uid="uid://btskpdqy7wl1g"]
 
 [ext_resource type="Script" uid="uid://eityohl6hjkn" path="res://scripts/bulltet.gd" id="1_1xjik"]
 [ext_resource type="PackedScene" uid="uid://ct2kwkshmm22q" path="res://assets/particles/bullet_explosion.tscn" id="2_7c61c"]
 [ext_resource type="Texture2D" uid="uid://8xpiuu8x53xn" path="res://assets/bullet_ball.png" id="3_7c61c"]
+[ext_resource type="PackedScene" uid="uid://c8m2eh3cplh2b" path="res://assets/particles/smoke_particle.tscn" id="4_4i3mq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xjik"]
 size = Vector2(4, 4)
+
+[sub_resource type="Curve" id="Curve_4i3mq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hepv1"]
+curve = SubResource("Curve_4i3mq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y6kq8"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 25.0
+initial_velocity_max = 75.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_hepv1")
 
 [node name="Bulltet" type="Area2D"]
 script = ExtResource("1_1xjik")
@@ -17,3 +35,9 @@ texture = ExtResource("3_7c61c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1xjik")
+
+[node name="SmokeParticle" parent="." instance=ExtResource("4_4i3mq")]
+amount = 200
+lifetime = 1.5
+explosiveness = 0.0
+process_material = SubResource("ParticleProcessMaterial_y6kq8")

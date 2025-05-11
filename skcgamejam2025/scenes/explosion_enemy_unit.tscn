@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dt1t6bclwdy80"]
 
-[ext_resource type="Script" path="res://scripts/explosion_enemy_unit.gd" id="1_3i8ta"]
-[ext_resource type="PackedScene" uid="uid://ct2kwkshmm22q" path="res://assets/particles/bullet_explosion.tscn" id="2_ejr3x"]
+[ext_resource type="Script" uid="uid://cdu2suv6rp0ph" path="res://scripts/explosion_enemy_unit.gd" id="1_3i8ta"]
+[ext_resource type="PackedScene" uid="uid://baoyfqkev5rb4" path="res://assets/particles/big_smoke_particle.tscn" id="2_ejr3x"]
 [ext_resource type="Texture2D" uid="uid://exknfn5lid8b" path="res://assets/shonja.png" id="2_qo8f5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejr3x"]
