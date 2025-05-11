@@ -39,9 +39,11 @@ position = Vector2(120, 120)
 idle_chance = 0.8
 
 [node name="PassiveSofaUnit" parent="Enemies" instance=ExtResource("6_ilhis")]
+modulate = Color(0.188235, 0.627451, 0.74902, 1)
 position = Vector2(88, 152)
 
 [node name="PassiveSofaUnit2" parent="Enemies" instance=ExtResource("6_ilhis")]
+modulate = Color(0.188235, 0.627451, 0.74902, 1)
 position = Vector2(136, 168)
 
 [node name="idle" parent="Enemies/PassiveSofaUnit2" index="1"]
