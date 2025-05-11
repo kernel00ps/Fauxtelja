@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=25 format=4 uid="uid://cambitfqiajw"]
+=======
+[gd_scene load_steps=31 format=4 uid="uid://cambitfqiajw"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" uid="uid://dsf31bx1psaw4" path="res://scripts/main_scene.gd" id="1_pw63i"]
 [ext_resource type="PackedScene" uid="uid://dk76svg2pv2bn" path="res://scenes/ui.tscn" id="3_7ykc4"]
@@ -10,6 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://dfje40ydhw0pa" path="res://scenes/melee_enemy_unit.tscn" id="8_18nlu"]
 [ext_resource type="PackedScene" uid="uid://dt1t6bclwdy80" path="res://scenes/explosion_enemy_unit.tscn" id="9_6wevv"]
 [ext_resource type="PackedScene" uid="uid://drvac06hfwlww" path="res://scenes/bullet_box.tscn" id="9_c1pb6"]
+[ext_resource type="AudioStream" uid="uid://d31uw24iqlun2" path="res://audio/sfx/step.wav" id="10_6wevv"]
+[ext_resource type="AudioStream" uid="uid://cgevcocbq4g0t" path="res://audio/sfx/shoot.wav" id="11_e1cbu"]
+[ext_resource type="AudioStream" uid="uid://bs5jsqnefxo5n" path="res://audio/sfx/death.wav" id="12_mngbo"]
+[ext_resource type="AudioStream" uid="uid://dp6564b8gohtm" path="res://audio/sfx/slurp2.mp3" id="12_r6p65"]
+[ext_resource type="AudioStream" uid="uid://dg87lbp08qikh" path="res://audio/sfx/pljuca1.mp3" id="14_si52b"]
+[ext_resource type="AudioStream" uid="uid://csu347i13ybbi" path="res://audio/sfx/no_bullets.wav" id="15_si52b"]
+[ext_resource type="AudioStream" uid="uid://0dp0bl2ev8q8" path="res://audio/sfx/bullet_pickup.wav" id="16_01n6w"]
 
 [sub_resource type="Gradient" id="Gradient_7ykc4"]
 offsets = PackedFloat32Array(0, 0.537285, 1)
@@ -193,3 +204,42 @@ position = Vector2(136, 120)
 
 [node name="BulletBox2" parent="Boxes" instance=ExtResource("9_c1pb6")]
 position = Vector2(184, 120)
+
+[node name="soundplayer_step" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_6wevv")
+volume_db = -9.662
+pitch_scale = 1.25
+
+[node name="soundplayer_shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_e1cbu")
+volume_db = -9.662
+pitch_scale = 1.25
+panning_strength = 2.0
+
+[node name="soundplayer_death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_mngbo")
+volume_db = -11.586
+pitch_scale = 0.91
+panning_strength = 2.0
+
+[node name="soundplayer_slurp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_r6p65")
+volume_db = -9.662
+pitch_scale = 1.25
+
+[node name="soundplayer_spit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_si52b")
+volume_db = -9.662
+pitch_scale = 1.25
+
+[node name="soundplayer_nobullets" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_si52b")
+volume_db = -9.662
+pitch_scale = 0.84
+panning_strength = 2.0
+
+[node name="soundplayer_pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_01n6w")
+volume_db = -10.798
+pitch_scale = 0.94
+panning_strength = 2.0

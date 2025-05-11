@@ -70,6 +70,7 @@ func shoot() -> void:
 
 	bullet.position = global_position
 	get_tree().current_scene.add_child(bullet)
+	Globals.play_sound.emit('spit')
 
 func play_attack_animation(direction: String) -> void:
 	for dir in ["right", "left", "up", "down"]:

@@ -32,6 +32,7 @@ func _process(delta):
 		if to_player.length() < 8:
 			if Globals.current_bullets < Globals.max_bullets:
 				Globals.current_bullets += 1
+				Globals.play_sound.emit('pickup');
 				Globals.bullet_collected.emit()
 			queue_free()
 			return
