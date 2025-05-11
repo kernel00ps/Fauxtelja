@@ -48,11 +48,17 @@ func init_evil_sofa_sprites():
 	for n in range(Globals.max_evil_sofas):
 		var sofa = load("res://scenes/ui_sofa_icon.tscn").instantiate()
 		sofa_container.add_child(sofa)
-		bullet_icons.append(sofa);
+		sofa_icons.append(sofa);
 	return
 
+func clear_evil_sofa_sprites() -> void:
+	var sofa_container = $"Sofa Counter";
+	for child in sofa_container.get_children():
+		sofa_container.remove_child(child)
+	sofa_icons.clear()
+
 func use_evil_sofa_sprite():
-	sofa_icons.get(Globals.current_evil_sofas-1).set_empty();
+	sofa_icons.get(Globals.current_evil_sofas).set_empty();
 	return
 
 func use_bullet_sprite():
