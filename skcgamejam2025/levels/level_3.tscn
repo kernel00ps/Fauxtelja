@@ -54,9 +54,11 @@ position = Vector2(56, 120)
 position = Vector2(136, 120)
 
 [node name="PassiveSofaUnit" parent="Enemies" instance=ExtResource("6_0unm6")]
+modulate = Color(0.609375, 0.75, 0.1875, 1)
 position = Vector2(72, 168)
 
 [node name="PassiveSofaUnit2" parent="Enemies" instance=ExtResource("6_0unm6")]
+modulate = Color(0.609375, 0.75, 0.1875, 1)
 position = Vector2(103, 168)
 
 [node name="idle" parent="Enemies/PassiveSofaUnit2" index="1"]
@@ -67,6 +69,7 @@ position = Vector2(72, 120)
 idle_chance = 0.4
 
 [node name="PassiveSofaUnit4" parent="Enemies" instance=ExtResource("6_0unm6")]
+modulate = Color(0.188235, 0.627451, 0.74902, 1)
 position = Vector2(120, 232)
 
 [node name="idle" parent="Enemies/PassiveSofaUnit4" index="1"]
@@ -74,18 +77,21 @@ position = Vector2(-1, 0)
 animation = &"idle_up"
 
 [node name="PassiveSofaUnit6" parent="Enemies" instance=ExtResource("6_0unm6")]
+modulate = Color(0.188235, 0.627451, 0.74902, 1)
 position = Vector2(56, 200)
 
 [node name="idle" parent="Enemies/PassiveSofaUnit6" index="1"]
 animation = &"idle_down"
 
 [node name="PassiveSofaUnit3" parent="Enemies" instance=ExtResource("6_0unm6")]
+modulate = Color(0.188235, 0.627451, 0.74902, 1)
 position = Vector2(120, 120)
 
 [node name="idle" parent="Enemies/PassiveSofaUnit3" index="1"]
 animation = &"idle_down"
 
 [node name="PassiveSofaUnit5" parent="Enemies" instance=ExtResource("6_0unm6")]
+modulate = Color(0.609375, 0.75, 0.1875, 1)
 position = Vector2(89, 200)
 
 [node name="idle" parent="Enemies/PassiveSofaUnit5" index="1"]
