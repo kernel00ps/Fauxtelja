@@ -3,6 +3,7 @@ extends Area2D
 class_name Bullet
 
 @export var explosion_effect: PackedScene 
+@export var wood_explosion_effect: PackedScene
 @onready var sprite = $Sprite2D
 
 var direction: Vector2 = Vector2.ZERO
@@ -24,7 +25,14 @@ func _on_collision(body: Node) -> void:
 		queue_free()
 
 func _explode(enemy : EnemyUnit) -> void:
-	var explosion = explosion_effect.instantiate()
+	
+	var explosion;
+	
+	if enemy is AfkUnit:
+		explosion = explosion_effect.instantiate()
+	else:
+		explosion = explosion_effect.instantiate()
+	
 	explosion.position = position
 	explosion.emitting = false
 	explosion.one_shot = true

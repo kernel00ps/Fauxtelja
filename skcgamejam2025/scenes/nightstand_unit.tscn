@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnlbrwejiowyg"]
+
+[ext_resource type="Script" uid="uid://cp7svod85qb36" path="res://scripts/afk_unit.gd" id="1_cakq8"]
+[ext_resource type="Texture2D" uid="uid://dnmnhf206vflg" path="res://assets/furniture_nightstand.png" id="2_1igu5"]
+[ext_resource type="Texture2D" uid="uid://dqud4soff0ss7" path="res://assets/sofa_16x16.png" id="3_1igu5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjmfa"]
+size = Vector2(14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt2n2"]
+atlas = ExtResource("3_1igu5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c16ls"]
+atlas = ExtResource("3_1igu5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18nlu"]
+atlas = ExtResource("3_1igu5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1pb6"]
+atlas = ExtResource("3_1igu5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_inqlh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt2n2")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c16ls")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18nlu")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1pb6")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}]
+
+[node name="NightstandUnit" type="CharacterBody2D"]
+script = ExtResource("1_cakq8")
+metadata/_custom_type_script = "uid://c1mo7wi7wthwb"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1.19209e-07, -8.9407e-08)
+texture = ExtResource("2_1igu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jjmfa")
+
+[node name="idle" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_inqlh")
+animation = &"idle_right"

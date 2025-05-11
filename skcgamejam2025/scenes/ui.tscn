@@ -14,7 +14,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_nt7q6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Vignette" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_nt7q6")
 anchors_preset = 15
 anchor_right = 1.0
