@@ -1,6 +1,8 @@
 extends EnemyUnit
 class_name MeleeEnemy
 
+@onready var body_sprite: AnimatedSprite2D = $idle
+
 func start_turn():
 	can_act = true
 
@@ -22,6 +24,18 @@ func start_turn():
 	var tile_distance = int(to_player.length() / Globals.TILE_SIZE)
 
 	if tile_distance <= 1:
+		var angle = to_player.angle()
+		var dir_str: String
+		if abs(angle) < PI / 4:
+			dir_str = "right"
+		elif abs(angle) > 3 * PI / 4:
+			dir_str = "left"
+		elif angle < 0:
+			dir_str = "up"
+		else:
+			dir_str = "down"
+		face_direction(dir_str)
+		play_attack_animation(dir_str)
 		melee_attack()
 		BackgroundMusic.slurp.emit()
 		print("%s (MeleeEnemy) attacks all adjacent tiles!" % self.name)
@@ -56,3 +70,27 @@ func melee_attack() -> void:
 		for result in results:
 			if result.collider is Player:
 				result.collider.die()
+				
+func face_direction(direction: String) -> void:
+	var anim_name = "idle_%s" % direction
+	if body_sprite.sprite_frames.has_animation(anim_name):
+		body_sprite.play(anim_name)
+	else:
+		push_warning("No animation '%s' on %s" % [anim_name, body_sprite.name])
+
+func play_attack_animation(direction: String) -> void:
+	for dir in ["right", "left", "up", "down"]:
+		var node = get_node_or_null("attack_%s" % dir) as AnimatedSprite2D
+		if node == null:
+			push_warning("attack_%s not found!" % dir)
+			continue
+
+		if dir == direction:
+			node.visible = true
+			node.stop()
+			node.frame = 0
+			node.play("lick_%s" % dir)
+		else:
+			node.stop()
+			node.frame = 0
+			node.visible = false

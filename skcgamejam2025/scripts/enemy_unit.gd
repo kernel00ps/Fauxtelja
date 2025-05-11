@@ -125,3 +125,4 @@ func is_tile_blocked(tile: Vector2) -> bool:
 		if box.has_method("get_current_tile") and box.get_current_tile() == tile:
 			return true
 	return false
+	
