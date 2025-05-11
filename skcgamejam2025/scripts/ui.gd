@@ -36,6 +36,12 @@ func init_bullet_sprites():
 		bullet_container.add_child(bull)
 		bullet_icons.append(bull);
 	return
+	
+func clear_bullet_sprites() -> void:
+	var bullet_container = $"Bullet Counter";
+	for child in bullet_container.get_children():
+		bullet_container.remove_child(child)
+	bullet_icons.clear()
 
 func init_evil_sofa_sprites():
 	var sofa_container = $"Sofa Counter";

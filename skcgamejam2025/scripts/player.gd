@@ -153,3 +153,6 @@ func die() -> void:
 	Globals.emit_signal("died")
 	var screen = game_over_screen.instantiate()
 	get_tree().current_scene.add_child(screen)
+
+func get_camera() -> Camera2D:
+	return $Camera2D
