@@ -120,6 +120,7 @@ func try_move_to_tile(target_tile: Vector2) -> void:
 		if viewport_rect.has_point(target_tile):
 			position = get_tile_center(target_tile)
 			moved = true
+			Globals.play_sound.emit('step');
 			end_turn()
 	else:
 		print("Invalid move. Must be to an adjacent tile.")
@@ -128,10 +129,14 @@ func shoot(direction: Vector2) -> void:
 	print("Shooting in direction %s" % direction)
 	
 	if(Globals.current_bullets > 0):
+		Globals.play_sound.emit('shoot');
 		Globals.use_bullet.emit();
 		Globals.current_bullets -= 1;
 		gun.fire()
 		end_turn()
+	else:
+		Globals.play_sound.emit("nobullets")
+		end_turn();
 
 
 func end_turn():
@@ -151,5 +156,9 @@ func die() -> void:
 	TurnManager.stop_turns()
 	#TODO: add die animation
 	Globals.emit_signal("died")
+	Globals.play_sound.emit("death")
 	var screen = game_over_screen.instantiate()
 	get_tree().current_scene.add_child(screen)
+
+func get_camera() -> Camera2D:
+	return $Camera2D

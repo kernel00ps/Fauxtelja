@@ -37,10 +37,10 @@ func start_turn():
 		face_direction(dir_str)
 		play_attack_animation(dir_str)
 		melee_attack()
+		Globals.play_sound.emit('slurp')
 		print("%s (MeleeEnemy) attacks all adjacent tiles!" % self.name)
 	else:
 		move_toward_player(player)
-
 	end_turn()
 	
 func melee_attack() -> void:
