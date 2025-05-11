@@ -66,7 +66,6 @@ func cleanup_invalid_units():
 	player_units = player_units.filter(is_instance_valid)
 	enemy_units = enemy_units.filter(is_instance_valid)
 
-
 func stop_turns() -> void:
 	turn_in_progress = false
 	turns_stopped = true
