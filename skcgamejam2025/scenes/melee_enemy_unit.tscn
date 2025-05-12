@@ -262,12 +262,14 @@ animations = [{
 }]
 
 [node name="MeleeEnemyUnit" type="CharacterBody2D"]
-modulate = Color(0.1875, 0.628125, 0.75, 1)
 material = SubResource("CanvasItemMaterial_0gns2")
 script = ExtResource("1_e0pp3")
+idle_chance = null
+thinking_time_range = null
 metadata/_custom_type_script = "uid://c1mo7wi7wthwb"
 
 [node name="idle" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.1875, 0.628125, 0.75, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_yk7oq")
 animation = &"idle_down"

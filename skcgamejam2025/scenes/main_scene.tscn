@@ -189,6 +189,8 @@ position = Vector2(264, 216)
 
 [node name="MeleeEnemyUnit" parent="Enemies" instance=ExtResource("8_18nlu")]
 position = Vector2(264, 200)
+idle_chance = null
+thinking_time_range = null
 
 [node name="ExplosionEnemyUnit" parent="Enemies" instance=ExtResource("9_6wevv")]
 position = Vector2(152, 199)

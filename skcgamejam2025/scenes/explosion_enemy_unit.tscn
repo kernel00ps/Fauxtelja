@@ -60,6 +60,7 @@ animations = [{
 }]
 
 [node name="ExplosionEnemyUnit" type="CharacterBody2D"]
+modulate = Color(0.75, 0.1875, 0.1875, 1)
 script = ExtResource("1_3i8ta")
 explosion_effect = ExtResource("2_ejr3x")
 metadata/_custom_type_script = "uid://c1mo7wi7wthwb"
@@ -71,11 +72,9 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_qo8f5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ejr3x")
 
 [node name="idle" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.75, 0.1875, 0.1875, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_bbs2w")
 animation = &"idle_down"

@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=4 uid="uid://qv7iumnqfv1q"]
+[gd_scene load_steps=15 format=4 uid="uid://qv7iumnqfv1q"]
 
-[ext_resource type="Script" uid="uid://b3dnnhhnyax0k" path="res://levels/level_4.gd" id="1_04hp8"]
+[ext_resource type="Script" path="res://levels/level_4.gd" id="1_04hp8"]
 [ext_resource type="PackedScene" uid="uid://dk76svg2pv2bn" path="res://scenes/ui.tscn" id="1_ng40l"]
 [ext_resource type="PackedScene" uid="uid://cff4r4xi4l8u7" path="res://scenes/player.tscn" id="2_04hp8"]
 [ext_resource type="Texture2D" uid="uid://cnvax6gh6df4l" path="res://assets/floor_sprites_16x16.png" id="3_8hlpj"]
-[ext_resource type="PackedScene" uid="uid://58jlvea4hh84" path="res://scenes/lamp_unit.tscn" id="4_qhnv2"]
-[ext_resource type="PackedScene" uid="uid://bjyxgpkr3m0g8" path="res://scenes/table_unit.tscn" id="5_vru0x"]
-[ext_resource type="PackedScene" uid="uid://bnlbrwejiowyg" path="res://scenes/nightstand_unit.tscn" id="6_5oqfd"]
-[ext_resource type="PackedScene" uid="uid://cocccdv8xeamn" path="res://scenes/passive_sofa_unit.tscn" id="7_8mt0c"]
+[ext_resource type="PackedScene" path="res://scenes/lamp_unit.tscn" id="4_qhnv2"]
+[ext_resource type="PackedScene" path="res://scenes/table_unit.tscn" id="5_vru0x"]
+[ext_resource type="PackedScene" path="res://scenes/nightstand_unit.tscn" id="6_5oqfd"]
+[ext_resource type="PackedScene" path="res://scenes/passive_sofa_unit.tscn" id="7_8mt0c"]
 [ext_resource type="PackedScene" uid="uid://cl2kndj6auiad" path="res://scenes/range_enemy_unit.tscn" id="8_dp2yl"]
 [ext_resource type="PackedScene" uid="uid://dfje40ydhw0pa" path="res://scenes/melee_enemy_unit.tscn" id="9_a7qdg"]
-[ext_resource type="PackedScene" uid="uid://drvac06hfwlww" path="res://scenes/bullet_box.tscn" id="10_g1ha7"]
+[ext_resource type="PackedScene" path="res://scenes/bullet_box.tscn" id="10_g1ha7"]
+[ext_resource type="PackedScene" uid="uid://bksx60ii5qvp4" path="res://scenes/explosion_enemy_unit.tscn" id="11_8hlpj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52a3b"]
 texture = ExtResource("3_8hlpj")
@@ -54,6 +55,7 @@ position = Vector2(72, 232)
 position = Vector2(152, 168)
 
 [node name="PassiveSofaUnit2" parent="Enemies" instance=ExtResource("7_8mt0c")]
+modulate = Color(1, 0.2, 0.2, 1)
 position = Vector2(103, 168)
 
 [node name="idle" parent="Enemies/PassiveSofaUnit2" index="1"]
@@ -112,6 +114,9 @@ position = Vector2(121, 232)
 modulate = Color(0.609375, 0.75, 0.1875, 1)
 position = Vector2(-1, 0)
 animation = &"idle_up"
+
+[node name="ExplosionEnemyUnit" parent="Enemies" instance=ExtResource("11_8hlpj")]
+position = Vector2(152, 152)
 
 [node name="Boxes" type="Node2D" parent="."]
 

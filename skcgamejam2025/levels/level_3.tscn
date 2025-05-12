@@ -1,16 +1,17 @@
-[gd_scene load_steps=14 format=4 uid="uid://68vnkqlf2koa"]
+[gd_scene load_steps=15 format=4 uid="uid://68vnkqlf2koa"]
 
-[ext_resource type="Script" uid="uid://byj5w01klrqn5" path="res://levels/level_3.gd" id="1_lfnxh"]
+[ext_resource type="Script" path="res://levels/level_3.gd" id="1_lfnxh"]
 [ext_resource type="PackedScene" uid="uid://dk76svg2pv2bn" path="res://scenes/ui.tscn" id="2_ofchu"]
 [ext_resource type="PackedScene" uid="uid://cff4r4xi4l8u7" path="res://scenes/player.tscn" id="3_jq78i"]
 [ext_resource type="Texture2D" uid="uid://cnvax6gh6df4l" path="res://assets/floor_sprites_16x16.png" id="4_lsnkt"]
-[ext_resource type="PackedScene" uid="uid://58jlvea4hh84" path="res://scenes/lamp_unit.tscn" id="5_jq78i"]
+[ext_resource type="PackedScene" path="res://scenes/lamp_unit.tscn" id="5_jq78i"]
 [ext_resource type="PackedScene" uid="uid://dfje40ydhw0pa" path="res://scenes/melee_enemy_unit.tscn" id="5_wj73x"]
-[ext_resource type="PackedScene" uid="uid://cocccdv8xeamn" path="res://scenes/passive_sofa_unit.tscn" id="6_0unm6"]
-[ext_resource type="PackedScene" uid="uid://bnlbrwejiowyg" path="res://scenes/nightstand_unit.tscn" id="7_lsnkt"]
-[ext_resource type="PackedScene" uid="uid://bjyxgpkr3m0g8" path="res://scenes/table_unit.tscn" id="7_q42ux"]
+[ext_resource type="PackedScene" path="res://scenes/passive_sofa_unit.tscn" id="6_0unm6"]
+[ext_resource type="PackedScene" path="res://scenes/nightstand_unit.tscn" id="7_lsnkt"]
+[ext_resource type="PackedScene" path="res://scenes/table_unit.tscn" id="7_q42ux"]
 [ext_resource type="PackedScene" uid="uid://cl2kndj6auiad" path="res://scenes/range_enemy_unit.tscn" id="9_wj73x"]
-[ext_resource type="PackedScene" uid="uid://drvac06hfwlww" path="res://scenes/bullet_box.tscn" id="11_wj73x"]
+[ext_resource type="PackedScene" uid="uid://bksx60ii5qvp4" path="res://scenes/explosion_enemy_unit.tscn" id="11_0unm6"]
+[ext_resource type="PackedScene" path="res://scenes/bullet_box.tscn" id="11_wj73x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fcfvj"]
 texture = ExtResource("4_lsnkt")
@@ -103,6 +104,12 @@ position = Vector2(152, 216)
 
 [node name="MeleeEnemyUnit" parent="Enemies" instance=ExtResource("5_wj73x")]
 position = Vector2(88, 232)
+
+[node name="ExplosionEnemyUnit" parent="Enemies" instance=ExtResource("11_0unm6")]
+position = Vector2(120, 200)
+
+[node name="ExplosionEnemyUnit2" parent="Enemies" instance=ExtResource("11_0unm6")]
+position = Vector2(56, 136)
 
 [node name="Boxes" type="Node2D" parent="."]
 
