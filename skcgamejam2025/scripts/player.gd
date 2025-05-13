@@ -133,6 +133,7 @@ func shoot(direction: Vector2) -> void:
 		Globals.use_bullet.emit();
 		Globals.current_bullets -= 1;
 		gun.fire()
+		await get_tree().create_timer(0.3).timeout
 		end_turn()
 	else:
 		Globals.play_sound.emit("nobullets")

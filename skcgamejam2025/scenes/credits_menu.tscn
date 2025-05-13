@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxjfb8f45agmh"]
+[gd_scene load_steps=8 format=3 uid="uid://dxjfb8f45agmh"]
 
-[ext_resource type="Script" uid="uid://ci4m6ahohi44y" path="res://scripts/button.gd" id="1_27l6r"]
-[ext_resource type="Shader" path="res://vignette_shader.gdshader" id="1_p38dx"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="1_27l6r"]
+[ext_resource type="Shader" uid="uid://dqth4d6y607at" path="res://vignette_shader.gdshader" id="1_p38dx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oqgs5"]
 shader = ExtResource("1_p38dx")
@@ -10,6 +10,18 @@ shader_parameter/outer_radius = 1.0
 shader_parameter/vignette_strength = 1.0
 shader_parameter/dither_strength = 0.03
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="FontFile" id="FontFile_p38dx"]
+cache/0/41/0/ascent = 0.0
+cache/0/41/0/descent = 0.0
+cache/0/41/0/underline_position = 0.0
+cache/0/41/0/underline_thickness = 0.0
+cache/0/41/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p38dx"]
 
@@ -45,16 +57,49 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.203922, 0.654902, 0.105882, 1)
 theme_override_font_sizes/font_size = 41
-text = "MADE FOR THE
-2025 SKC GAME JAM
+text = "
 
-kernel00ps
-StevanT
+MADE FOR THE
+2025 SKC GAME JAM"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.203922, 0.654902, 0.105882, 1)
+theme_override_fonts/font = SubResource("FontFile_p38dx")
+theme_override_font_sizes/font_size = 41
+text = "
+
+
 BYK27
+StevanT
+kernel00ps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dfje40ydhw0pa" path="res://scenes/melee_enemy_unit.tscn" id="5_wj73x"]
 [ext_resource type="PackedScene" path="res://scenes/passive_sofa_unit.tscn" id="6_0unm6"]
 [ext_resource type="PackedScene" path="res://scenes/nightstand_unit.tscn" id="7_lsnkt"]
-[ext_resource type="PackedScene" path="res://scenes/table_unit.tscn" id="7_q42ux"]
+[ext_resource type="PackedScene" uid="uid://b5cipwytbv17x" path="res://scenes/table_unit.tscn" id="7_q42ux"]
 [ext_resource type="PackedScene" uid="uid://cl2kndj6auiad" path="res://scenes/range_enemy_unit.tscn" id="9_wj73x"]
 [ext_resource type="PackedScene" uid="uid://bksx60ii5qvp4" path="res://scenes/explosion_enemy_unit.tscn" id="11_0unm6"]
 [ext_resource type="PackedScene" path="res://scenes/bullet_box.tscn" id="11_wj73x"]

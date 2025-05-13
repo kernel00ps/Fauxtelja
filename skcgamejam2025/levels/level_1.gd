@@ -1,6 +1,5 @@
 extends BaseLevel
 
-
 func _ready() -> void:
 	initiate_turn_manager()
 	#get_used_rect_for_layer($TileMapLayer)

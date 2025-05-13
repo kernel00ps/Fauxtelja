@@ -34,27 +34,17 @@ tile_set = SubResource("TileSet_pa8r4")
 
 [node name="MeleeEnemyUnit" parent="Enemies" instance=ExtResource("5_n46q3")]
 position = Vector2(56, 136)
-idle_chance = null
-thinking_time_range = null
 
 [node name="MeleeEnemyUnit2" parent="Enemies" instance=ExtResource("5_n46q3")]
 position = Vector2(56, 152)
-idle_chance = null
-thinking_time_range = null
 
 [node name="MeleeEnemyUnit3" parent="Enemies" instance=ExtResource("5_n46q3")]
 position = Vector2(56, 168)
-idle_chance = null
-thinking_time_range = null
 
 [node name="MeleeEnemyUnit4" parent="Enemies" instance=ExtResource("5_n46q3")]
 position = Vector2(56, 184)
-idle_chance = null
-thinking_time_range = null
 
 [node name="MeleeEnemyUnit5" parent="Enemies" instance=ExtResource("5_n46q3")]
 position = Vector2(56, 120)
-idle_chance = null
-thinking_time_range = null
 
 [node name="Boxes" type="Node2D" parent="."]

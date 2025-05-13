@@ -24,13 +24,13 @@ func hit_by_bullet():
 		
 		get_parent().add_child(fx)
 
-		fx.finished.connect( OnFinishedParticle.bind( fx ) )
+		fx.finished.connect(OnFinishedParticle.bind(fx))
 
 	drop_bullets()
 	queue_free()
 	
-func OnFinishedParticle( explosion ):
-	remove_child( explosion )
+func OnFinishedParticle(explosion):
+	remove_child(explosion)
 	explosion.queue_free()
 
 func drop_bullets():

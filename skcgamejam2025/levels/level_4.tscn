@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cff4r4xi4l8u7" path="res://scenes/player.tscn" id="2_04hp8"]
 [ext_resource type="Texture2D" uid="uid://cnvax6gh6df4l" path="res://assets/floor_sprites_16x16.png" id="3_8hlpj"]
 [ext_resource type="PackedScene" path="res://scenes/lamp_unit.tscn" id="4_qhnv2"]
-[ext_resource type="PackedScene" path="res://scenes/table_unit.tscn" id="5_vru0x"]
+[ext_resource type="PackedScene" uid="uid://b5cipwytbv17x" path="res://scenes/table_unit.tscn" id="5_vru0x"]
 [ext_resource type="PackedScene" path="res://scenes/nightstand_unit.tscn" id="6_5oqfd"]
 [ext_resource type="PackedScene" path="res://scenes/passive_sofa_unit.tscn" id="7_8mt0c"]
 [ext_resource type="PackedScene" uid="uid://cl2kndj6auiad" path="res://scenes/range_enemy_unit.tscn" id="8_dp2yl"]

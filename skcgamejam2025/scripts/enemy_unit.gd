@@ -8,7 +8,7 @@ class_name EnemyUnit
 var idle_chance: float = 0.0  # 0 = never idle, 1 = always idle
 var is_evil: bool = true
 
-@export var thinking_time_range: Vector2 = Vector2(0.2, 0.6)  # min and max thinking delay in seconds
+@export var thinking_time_range: Vector2 = Vector2(0.1, 0.3)  # min and max thinking delay in seconds
 
 func start_turn():
 	super.start_turn()
@@ -39,7 +39,6 @@ func start_turn():
 		move_toward_player(player)
 
 	end_turn()
-
 
 func move_toward_player(player: Node2D) -> void:
 	var to_player = player.global_position - global_position
@@ -115,6 +114,8 @@ func get_closest_player() -> Node2D:
 
 func die() -> void:
 	if TurnManager.enemy_units.has(self):
+		if TurnManager.enemy_units.size() <= TurnManager.current_unit_index:
+			return
 		var was_my_turn = (TurnManager.enemy_units[TurnManager.current_unit_index] == self)
 		TurnManager.enemy_units.erase(self)
 		evil_sofa_killed()

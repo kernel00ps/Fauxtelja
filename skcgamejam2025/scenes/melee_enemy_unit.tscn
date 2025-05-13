@@ -264,8 +264,6 @@ animations = [{
 [node name="MeleeEnemyUnit" type="CharacterBody2D"]
 material = SubResource("CanvasItemMaterial_0gns2")
 script = ExtResource("1_e0pp3")
-idle_chance = null
-thinking_time_range = null
 metadata/_custom_type_script = "uid://c1mo7wi7wthwb"
 
 [node name="idle" type="AnimatedSprite2D" parent="."]
@@ -281,7 +279,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_potkj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_e0pp3")
 
 [node name="attack_right" type="AnimatedSprite2D" parent="."]

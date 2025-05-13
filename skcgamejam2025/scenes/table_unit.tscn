@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjyxgpkr3m0g8"]
+[gd_scene load_steps=10 format=3 uid="uid://b5cipwytbv17x"]
 
 [ext_resource type="Script" uid="uid://cp7svod85qb36" path="res://scripts/afk_unit.gd" id="1_0x5g1"]
 [ext_resource type="Texture2D" uid="uid://bmyg6xfg24gse" path="res://assets/furniture_table.png" id="2_0x5g1"]
