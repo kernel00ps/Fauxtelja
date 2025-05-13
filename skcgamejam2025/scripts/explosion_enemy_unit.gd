@@ -40,7 +40,7 @@ func _explode():
 
 	queue_free()
 
-func OnFinishedParticle( explosion ):
-	remove_child( explosion )
+func OnFinishedParticle(explosion):
+	remove_child(explosion)
 	explosion.queue_free()
 	
