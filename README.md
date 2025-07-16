@@ -1,4 +1,5 @@
-# SKCGameJam2025
+# Fauxtelja
+Entry for the SKC Game Jam 2025
 ### Concept
 Turn based puzzle game with multiple levels. The player is an employee at a furniture store, tasked with destroying evil sofas possessed by an alien virus.
 ### Player
