@@ -9,3 +9,5 @@ Can be either infected (enemy), or a regular piece of furniture. The regular pie
 Other types of furniture exist:
 - Tables and lamps: stationary, no special characteristics
 - Boxes: give ammo to player when destroyed
+
+[Play on itch.io](https://byk27.itch.io/fauxtelja)
