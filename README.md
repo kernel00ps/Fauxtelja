@@ -1,23 +1,11 @@
 # SKCGameJam2025
-
-### Igrac
-
-Igrac vidi iskljucivo tile-ove oko sebe. u jednom potezu moze da se pomeri ili da napadne (u jednom od 4 smera). Ako nije odmah pored stvari koje napada, ispaljuje metak, u suprotnom vrsi 'melee' napad. Ima 3 srca, koja kada izgubi, gubi nivo. Ima 3 metka koja koristi za pucanje.
-Poenta igre mu je da unisti zarazene delove fotelja, a poeni se racunaju tako sto se na neki nacin na kraju nivoa sabiraju sve preostale fotelje.
-### Fotelja
-
-Fotelja zauzima \[1, 3\] tile-ova, kao fotelja/dvosed/trosed irl. Delovi mogu da budu razneseni, i tako dobijaju malo drugaciju teksturu na raznesenoj ivici. Nestaje kada su razneseni svi delovi (tile-ovi).
-
-### Namestaj
-
-Postoji jos vrsta namestaja (stolovi, lampe, kutije). Ne mogu biti zaposednuti ali mogu biti unisteni. 
-- Sto nema nikakve posebne karakteristike.
-- Lampa osijava tile-ove oko sebe.
-- Kutija, nakon unistenja, na pod ostavlja pickup. (metkovi, powerup...)
-### Virus
-
-Virus zauzima 1 tile unutar neke fotelje. Ako se nalazi u fotelji, on moze da je pomera ili da napada iz nje (na nacin koji zavisi od vrste virusa, ali recimo samo obican melee napad na igraca za sad). Takodje moze da predje na susedni tile ukoliko se na njemu nalazi fotelja ili deo fotelje.
-
-### Ideja
-
-Tepih - pod na kojem fotelje pri pomeranju ostavljaju trag.
+### Concept
+Turn based puzzle game with multiple levels. The player is an employee at a furniture store, tasked with destroying evil sofas possessed by an alien virus.
+### Player
+The player can use their move to either move or attack in a chosen direction. The player has 3 lives and 3 starting bullets. The goal is to shoot all infected sofas.
+### Sofa
+Can be either infected (enemy), or a regular piece of furniture. The regular pieces stay still and take no turns. The infected pieces each get a turn after the player makes their move. There are 3 types of enemies - melee, ranged, and explosive. The melee enemies prioritize moving towards the player, only attacking when adjacent to the player. The ranged enemies will either choose to shoot the player (if player is in line of sight) or move by a single tile to better align themselves with the player. The explosive enemies will wait until the player is close enough to damage with the explosion.
+### Other furniture
+Other types of furniture exist:
+- Tables and lamps: stationary, no special characteristics
+- Boxes: give ammo to player when destroyed
